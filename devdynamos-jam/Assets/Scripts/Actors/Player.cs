@@ -1,33 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private float spawnDistance; // distancia do spawn do inimigo
-    [SerializeField] private float spawnFrequency; // Tempo do spawn do inimigo
+    private int playerLife;
+    [SerializeField] private int playerMaxLife = 3;
+
+
+
+    [SerializeField] private bool isDead = false;
+
+    [SerializeField] private Image lifeBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemyRoutine());
+        playerLife = playerMaxLife;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
-
-    IEnumerator SpawnEnemyRoutine() // Vai ficar spawnando o inimigo na distancia e no tempo definido
-    {
-        while (true)
+        if(playerLife == 0)
         {
-            Vector2 spawnPosition = (Vector2)transform.position + Random.insideUnitCircle.normalized * spawnDistance;
-            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            isDead = true;
 
-            yield return new WaitForSeconds(spawnFrequency);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet" && isDead == false)
+        {
+            playerLife -= 1;
+            lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
         }
     }
 }
