@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143384ad42721ce4bb3f3bcbb7b74ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jogadorParaSeguir: {fileID: 0}
+  _jogadorParaSeguir: {fileID: 843642754}
   _rangeDeVisao: 5
   _distanciaMaxDoPlayer: 3
   _estaCaminhando: 0
@@ -487,6 +487,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &843642754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2833191728628214001, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
+  m_PrefabInstance: {fileID: 2833191729168145232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &934036872
 GameObject:
   m_ObjectHideFlags: 0
