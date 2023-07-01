@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ObjetoCarregavel : MonoBehaviour, ICarregavel
@@ -7,10 +8,16 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
     /// </summary>
     public bool BeingCarried => _carryingObject != null;
 
+    [SerializeField] private float _onDropMovementSpeed = 0.5f;
+    [SerializeField] private float _onDropAnimationSpeed = 0.3f;
+
     /// <summary>
     /// Expoe o Transform do objeto
     /// </summary>
     Transform ICarregavel.CurrentPosition => transform;
+
+    public GameObject CarryingIndicator;
+    public GameObject ObjectSprite;
 
     /// <summary>
     /// Referencia ao objeto que esta carregando este objeto
@@ -18,11 +25,15 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
     public GameObject _carryingObject;
     
     // Metodo para dropar esse item
-    public void OnDrop()
+    public void OnDrop(bool move = false)
     {
         if (!BeingCarried) return;
         _carryingObject = null;
         DropVisualUpdate();
+        if (move)
+        {
+            StartCoroutine(DropMovement());
+        }
     }
 
     // Metodo para pegar esse item
@@ -43,6 +54,8 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
     {
         // Desativar o sprite renderer ou fazer alteracoes visuais ao ser carregado;
         // Podemos desativar o sprite renderer e ativar um Icone do item em cima do objeto que esta carregando
+        CarryingIndicator.SetActive(true);
+        ObjectSprite.SetActive(false);
     }
 
     // Metodo usao para fazer as alteracoes visuais quando o objeto e pego
@@ -50,5 +63,19 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
     {
         // Reativar o sprite renderer ou fazer alteracoes visuais ao ser largado no chao;
         // Desativar icone indicando quem esta carregando este item
+        CarryingIndicator.SetActive(false);
+        ObjectSprite.SetActive(true);
+    }
+
+    private IEnumerator DropMovement()
+    {
+        var movementDirection = (Vector2)Random.insideUnitCircle * .25f + (Vector2)transform.position;
+        var animTime = 0f;
+        while(animTime < _onDropAnimationSpeed)
+        {
+            yield return new WaitForFixedUpdate();
+            transform.position = (Vector2)transform.position + (Vector2)movementDirection * Time.deltaTime;
+            animTime += Time.deltaTime;
+        }
     }
 }
