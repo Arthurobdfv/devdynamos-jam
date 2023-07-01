@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class FillBar : MonoBehaviour
 {
-    [SerializeField] private int maxFill = 3;
-    [SerializeField] private int currentFill;
+    [SerializeField] public int maxFill = 3;
+    [SerializeField] public int currentFill;
 
     [SerializeField] private Image fillBar;
 
