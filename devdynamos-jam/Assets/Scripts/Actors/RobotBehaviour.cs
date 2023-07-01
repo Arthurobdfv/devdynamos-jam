@@ -126,6 +126,7 @@ public class RobotBehaviour : MonoBehaviour
     {
         if (SquareDistanceFrom(_spaceshipPosition) <= _carryObjectComponent.SquaredPickupDistance)
         {
+            _galaoDeGasolina = null;
             _carryObjectComponent.Drop();
             // Aqui podemos adicionar referencia aos scripts de vitoria do jogo e / ou scripts da nave ao receber a gasolina
         } 
