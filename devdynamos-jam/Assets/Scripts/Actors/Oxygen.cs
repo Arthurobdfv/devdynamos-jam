@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class Oxygen : MonoBehaviour
 {
+
     [SerializeField] private float maxFill = 1;
 
     [SerializeField] private Image oxygenBar;
     [SerializeField] private bool near = false;
 
-    
-    public float oxygenValue;
+    [SerializeField] public bool isOxygen => oxygenValue > 0;
+
+
+    [SerializeField] public float oxygenValue;
 
 
 

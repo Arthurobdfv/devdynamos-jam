@@ -6,14 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private FillBar fill;
+    [SerializeField] private Oxygen oxygen;
+    [SerializeField] private Player lifeplayer;
 
     [SerializeField] private GameObject fimDeJogo;
+
 
     // Start is called before the first frame update
     void Start()
     {
         fill = FindObjectOfType<FillBar>();
+        oxygen = FindObjectOfType<Oxygen>();
+        lifeplayer = FindObjectOfType<Player>();
         fimDeJogo.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -23,6 +30,16 @@ public class GameManager : MonoBehaviour
         {
             Winner();
         }
+
+        if (oxygen.isOxygen == false)
+        {
+            Loser();
+        }
+
+        if (lifeplayer.PlayerDead == true)
+        {
+            Loser();
+        }
     }
 
     void Winner()
@@ -31,8 +48,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    void Loser()
+    {
+        Time.timeScale = 0;
+        //fim de jogo Derrota
+    }
+
     public void Restart()
     {
-        //fim de jogo
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
