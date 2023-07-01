@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     private int playerLife;
     [SerializeField] private int playerMaxLife = 3;
 
+    public bool PlayerDead => isDead;
 
 
     [SerializeField] private bool isDead = false;
 
     [SerializeField] private Image lifeBar;
+
 
     // Start is called before the first frame update
     void Start()
