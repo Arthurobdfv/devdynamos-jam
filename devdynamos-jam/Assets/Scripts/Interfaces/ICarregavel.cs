@@ -8,5 +8,5 @@ public interface ICarregavel
     public bool BeingCarried { get; }
     public Transform CurrentPosition { get; }
     public void OnPickUp(GameObject obj);
-    public void OnDrop();
+    public void OnDrop(bool move = false);
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(CarryObjectComponent))]
 public class RobotBehaviour : MonoBehaviour
 {
+    public float CurrentOverLoad => _currentOverload;
     private bool IsMoving
     {
         get
@@ -79,6 +80,24 @@ public class RobotBehaviour : MonoBehaviour
     /// Indica se ele encontrou um objeto para pegar
     /// </summary>
     [SerializeField] private bool _foundFuel => _galaoDeGasolina != null;
+    /// <summary>
+    /// Indica se o robo esta sobrecarregado
+    /// </summary>
+    [SerializeField] private bool _isOverloaded;
+    /// <summary>
+    /// Velocidade com a qual o overload enche
+    /// </summary>
+    [SerializeField] private float _overloadRate;
+    /// <summary>
+    /// Velocidade com a qual recarrega a barra
+    /// </summary>
+    [SerializeField] private float _overloadRechargeRate;
+    /// <summary>
+    /// Limite de overload do robo antes de explodir
+    /// </summary>
+    [SerializeField] private float _maxOverloadBar;
+    [SerializeField] private float _currentOverload;
+    [SerializeField] private float _overloadTime; 
     #endregion
 
     IEnumerable _patrolCoroutine;
@@ -89,6 +108,7 @@ public class RobotBehaviour : MonoBehaviour
         _carryObjectComponent = GetComponent<CarryObjectComponent>() ?? throw new MissingComponentException(nameof(CarryObjectComponent));
         _circleCollider = GetComponent<CircleCollider2D>() ?? throw new MissingComponentException(nameof(CarryObjectComponent));
         _circleCollider.radius = _visionRange;
+        _currentOverload = 0f;
     }
 
     // Update is called once per frame
@@ -102,7 +122,10 @@ public class RobotBehaviour : MonoBehaviour
     /// </summary>
     void StateControl()
     {
-        if (!_carryObjectComponent.IsCarrying && _galaoDeGasolina != null)
+        CalculateOverLoadChance();
+        if (_isOverloaded)
+            return;
+        else if (!_carryObjectComponent.IsCarrying && _galaoDeGasolina != null)
         {
             MoveTowards(_galaoDeGasolina.CurrentPosition);
             TryPickupFuel();
@@ -119,6 +142,20 @@ public class RobotBehaviour : MonoBehaviour
             IsMoving = false;
             if (!IsMoving && !_scannedPosition && !_isScanning) StartCoroutine(Scan());
             if (!_isPatroling && !IsMoving && !_isScanning) StartCoroutine(Patrol());
+        }
+    }
+
+    private void CalculateOverLoadChance()
+    {
+        var carryingItem = _carryObjectComponent.IsCarrying;
+        if (carryingItem)
+            _currentOverload += _overloadRate * Time.deltaTime;
+        else _currentOverload -= (_overloadRate / 2 ) * Time.deltaTime;
+        _currentOverload = Mathf.Clamp(_currentOverload, 0, _maxOverloadBar);
+        if (_currentOverload >= _maxOverloadBar)
+        {
+            if (carryingItem) _carryObjectComponent.Drop(true);
+            StartCoroutine(Overload());
         }
     }
 
@@ -160,6 +197,23 @@ public class RobotBehaviour : MonoBehaviour
         transform.Translate(directionToWalk * Time.deltaTime * _robotMoveSpeed);
     }
 
+    // Metodo onde o robo esta overloaded
+    private IEnumerator Overload()
+    {
+        _isOverloaded = true;
+        var rechargeRate = (float)_maxOverloadBar / _overloadTime;
+        float time = 0f;
+        while(time < _overloadTime)
+        {
+            yield return new WaitForFixedUpdate();
+            _currentOverload -= rechargeRate * Time.deltaTime;
+            time += Time.deltaTime;
+        }
+        _isOverloaded = false;
+        _currentOverload = 0f;
+    }
+
+
     private IEnumerator Scan()
     {
         Debug.Log("Starting Scan");
@@ -180,12 +234,12 @@ public class RobotBehaviour : MonoBehaviour
     private IEnumerator Patrol()
     {
         _isPatroling = true;
+        IsMoving = true;
         yield return new WaitForSeconds(3);
         Vector2 patrolPoint = (Random.insideUnitCircle * Random.Range(0, _playerMaxDistance)) + (Vector2)_playerToFollow.transform.position;
         var directionToWalk = (patrolPoint - (Vector2)Position);
         while (directionToWalk.sqrMagnitude > .5f)
         {
-            IsMoving = true;
             transform.Translate(directionToWalk.normalized * _robotMoveSpeed * Time.deltaTime);
             directionToWalk = (patrolPoint - (Vector2)Position);
             yield return new WaitForFixedUpdate();

@@ -57,11 +57,11 @@ public class CarryObjectComponent : MonoBehaviour
     /// <summary>
     /// Metodo usado para dropar o objeto que esta carregando
     /// </summary>
-    public void Drop()
+    public void Drop(bool move = false)
     {
         if (IsCarrying)
         {
-            _carriedObject.OnDrop();
+            _carriedObject.OnDrop(move);
             _carriedObject = null;
         }
     }
