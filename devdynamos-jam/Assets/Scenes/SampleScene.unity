@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2833191728628214003, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2833191728628214003, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -346,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1324174364299299262, guid: 2757810eb9050184f8961d03ebaf33d6, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1324174364299299262, guid: 2757810eb9050184f8961d03ebaf33d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -390,6 +390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2757810eb9050184f8961d03ebaf33d6, type: 3}
+--- !u!212 &389222426 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 389222426, guid: d55aade0e61136e45812376804639f7f, type: 3}
+  m_PrefabInstance: {fileID: 1579408650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &390461708
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +443,7 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517156990
 GameObject:
@@ -722,7 +727,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &622077211
 GameObject:
@@ -797,7 +802,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -15468,7 +15473,7 @@ RectTransform:
   - {fileID: 85311097}
   - {fileID: 1514696822}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15575,7 +15580,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -18009,7 +18014,7 @@ Transform:
   - {fileID: 622077212}
   - {fileID: 1438711917}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1514696821
 GameObject:
@@ -18094,6 +18099,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1321319247, guid: d55aade0e61136e45812376804639f7f, type: 3}
+      propertyPath: fillbarRenderer
+      value: 
+      objectReference: {fileID: 389222426}
     - target: {fileID: 8778102742311210833, guid: d55aade0e61136e45812376804639f7f, type: 3}
       propertyPath: m_Name
       value: Robot
@@ -18108,7 +18117,7 @@ PrefabInstance:
       objectReference: {fileID: 1220734056}
     - target: {fileID: 8778102742311210835, guid: d55aade0e61136e45812376804639f7f, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8778102742311210835, guid: d55aade0e61136e45812376804639f7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18240,6 +18249,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 260331827, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1233398709, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
       propertyPath: fillBar
       value: 
@@ -18250,7 +18263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2535669628100981527, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2535669628100981527, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
       propertyPath: m_LocalPosition.x

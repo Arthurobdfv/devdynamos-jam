@@ -7,6 +7,7 @@ using UnityEngine;
 public class RobotBehaviour : MonoBehaviour
 {
     public float CurrentOverLoad => _currentOverload;
+    public float CurrentOverloadRate => _currentOverload / _maxOverloadBar;
     private bool IsMoving
     {
         get
