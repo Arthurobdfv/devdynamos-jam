@@ -191,42 +191,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1 &260331826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 260331827}
-  m_Layer: 0
-  m_Name: FuelBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &260331827
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260331826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1220734056}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &263489462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,18 +202,6 @@ PrefabInstance:
       propertyPath: lifeBar
       value: 
       objectReference: {fileID: 1687488813}
-    - target: {fileID: 843642761, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
-      propertyPath: audio.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 843642761, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
-      propertyPath: audio.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 981ae191369a0fa42aab522a5bdaf158, type: 3}
-    - target: {fileID: 843642761, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
-      propertyPath: audio.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: cba2b4c0431d1bd4c8b961d7ab933a4d, type: 3}
     - target: {fileID: 1640506919, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
       propertyPath: oxygenBar
       value: 
@@ -15420,11 +15372,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &667340093 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8778102742311210835, guid: d55aade0e61136e45812376804639f7f, type: 3}
-  m_PrefabInstance: {fileID: 1579408650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &710596110
 GameObject:
   m_ObjectHideFlags: 0
@@ -15868,37 +15815,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2535669628100981527, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
   m_PrefabInstance: {fileID: 1735490418}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1321319244
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1321319245}
-  m_Layer: 0
-  m_Name: OverchargeBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1321319245
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321319244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 667340093}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1379304032
 GameObject:
   m_ObjectHideFlags: 0
