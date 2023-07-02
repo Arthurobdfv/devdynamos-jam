@@ -83,12 +83,12 @@ public class EnemyController : MonoBehaviour
         if (Random.Range(0, 100) < seguirPlayer)
         {
             // Referenciar a posição do player 
-            alvo = GameObject.Find("Player").transform;
+            alvo = GameObject.FindGameObjectWithTag("Player").transform;
         }
         else
         {
             // Referenciar a posição do player 
-            alvo = GameObject.Find("Robo").transform;
+            alvo = GameObject.FindGameObjectWithTag("Robo").transform;
         }
     }
 }
