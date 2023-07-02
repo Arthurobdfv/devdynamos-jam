@@ -422,6 +422,7 @@ MonoBehaviour:
   _includeMouseOnCameraPos: 1
   _targets: []
   _mouseWeight: 0.3
+  _cameraInitialSize: 5
 --- !u!4 &390461710
 Transform:
   m_ObjectHideFlags: 0
