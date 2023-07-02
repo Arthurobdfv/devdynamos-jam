@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
-<<<<<<<< HEAD:devdynamos-jam/Assets/Scripts/Player/PlayerProjetil.cs
 public class PlayerProjetil : MonoBehaviour
-========
-public class ShootEnemy : MonoBehaviour
->>>>>>>> develop:devdynamos-jam/Assets/Scripts/Enemy/ShootEnemy.cs
 {
     public GameObject projetil;
     
