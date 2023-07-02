@@ -388,8 +388,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1324174364299299251, guid: 2757810eb9050184f8961d03ebaf33d6, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2757810eb9050184f8961d03ebaf33d6, type: 3}
 --- !u!1 &390461708
 GameObject:
@@ -423,6 +422,7 @@ MonoBehaviour:
   _includeMouseOnCameraPos: 1
   _targets: []
   _mouseWeight: 0.3
+  _cameraInitialSize: 5
 --- !u!4 &390461710
 Transform:
   m_ObjectHideFlags: 0
