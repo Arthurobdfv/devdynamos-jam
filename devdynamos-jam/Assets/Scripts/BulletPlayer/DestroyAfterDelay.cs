@@ -1,25 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
-public class ShootEnemy : MonoBehaviour
+
+public class DestroyAfterDelay : MonoBehaviour
 {
-    public GameObject projetil;
-    
+    public float delay = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(gameObject, delay);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            GameObject bala = Instantiate(projetil);
-        }
-
+        
     }
 }
