@@ -298,21 +298,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7ad40667ecbc142a17b49ef677ad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMaxLife: 3
+  isDead: 0
+  lifeBar: {fileID: 0}
   rig: {fileID: 147383344}
   speed: 8
---- !u!114 &147383349
-MonoBehaviour:
+  bulletSpeed: 4.53
+  bulletPrefab: {fileID: 529819658977765301, guid: dd1b5d8557f38814d8bb5e63ef0cab2c, type: 3}
+  firePoint: {fileID: 369155784}
+--- !u!4 &147383350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2833191728628214003, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
+  m_PrefabInstance: {fileID: 147383342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &369155783
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147383343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdc1be7938a69684d8dd208ee3285f48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projetil: {fileID: 529819658977765301, guid: dd1b5d8557f38814d8bb5e63ef0cab2c, type: 3}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 369155784}
+  m_Layer: 0
+  m_Name: Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &369155784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369155783}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.001, y: 0.636, z: 0}
+  m_LocalScale: {x: 1, y: 0.7682262, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147383350}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136905414
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,15 +19,18 @@ public class Player : MonoBehaviour
     private Vector2 _direction;
     public float speed;
 
+    public float bulletSpeed;
     public GameObject bulletPrefab;
-    public float bulltetSpeed;
+    public Transform firePoint;
 
-    private Camera playerCamera;
+    private void Awake()
+    {
+        rig = GetComponent<Rigidbody2D>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        playerCamera = Camera.main;
         playerLife = playerMaxLife;
 
     }
@@ -35,48 +38,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerLife == 0)
-        {
-            isDead = true;
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 lookDirection = Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
+        lookDirection.z = 0f;
 
+        if (lookDirection.magnitude > 0.1f)
+        {
+            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        OnInput();
-        OnMove();
 
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
     }
-    void OnInput()
+    private void FixedUpdate()
     {
-        _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-    void OnMove()
-    {
-        rig.MovePosition(rig.position + _direction * speed * Time.fixedDeltaTime);
-    }
-
-    void Shoot()
-    {
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit))
-        {
-            Vector3 targetPosition = hit.point;
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-            Vector3 shootDirection = targetPosition - transform.position;
-            bullet.transform.rotation = Quaternion.LookRotation(shootDirection);
-
-            Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>(); 
-            if(bulletRigidbody != null )
-            {
-                bulletRigidbody.velocity = shootDirection.normalized * bulltetSpeed;
-            }
-        }
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        rig.velocity = movement * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -87,22 +70,11 @@ public class Player : MonoBehaviour
             lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
         }
     }
+    private void Shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+        bulletRigidbody.velocity = bullet.transform.up * bulletSpeed;
+    }
+
 }
-
-//Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-//RaycastHit hit;
-
-//if (Physics.Raycast(ray, out hit))
-//{
-//    Vector3 targetPosition = hit.point;
-//    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-//    Vector3 shootDirection = targetPosition - transform.position;
-//    bullet.transform.rotation = Quaternion.LookRotation(shootDirection);
-
-//    Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-//    if (bulletRigidbody != null)
-//    {
-//        bulletRigidbody.velocity = shootDirection.normalized * bulletSpeed;
-//    }
-//}
