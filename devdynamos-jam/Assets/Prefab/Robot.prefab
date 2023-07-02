@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8778102742311210834}
   - component: {fileID: 8778102742311210828}
   - component: {fileID: 8778102742311210829}
+  - component: {fileID: 328894374743222678}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -94,6 +95,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &328894374743222678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778102742311210833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e80fe61e8d6014db9afdb686649e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8778102743545746678
 GameObject:
   m_ObjectHideFlags: 0
