@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private int playerLife;
+    [SerializeField] private int playerLife;
     [SerializeField] private int playerMaxLife = 3;
 
     public bool PlayerDead => isDead;
