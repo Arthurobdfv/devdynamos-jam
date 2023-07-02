@@ -56,5 +56,4 @@ public class Oxygen : MonoBehaviour
             near = false;
         }
     }
-
 }

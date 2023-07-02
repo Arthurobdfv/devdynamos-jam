@@ -88,7 +88,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             // Referenciar a posição do player 
-            alvo = GameObject.Find("Gasolina").transform;
+            alvo = GameObject.Find("Robo").transform;
         }
     }
 }

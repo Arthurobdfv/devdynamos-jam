@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Nave
   - EnemyBullet
+  - Robo
   layers:
   - Default
   - TransparentFX

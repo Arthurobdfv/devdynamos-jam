@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private bool _includeMouseOnCameraPos = false;
-    private List<Vector3> _targets;
+    [SerializeField] private List<GameObject> _targets;
+    [SerializeField] private float _mouseWeight = 1;
     public void Start()
     {
         RefreshCamera();
@@ -13,22 +14,22 @@ public class CameraFollow : MonoBehaviour
 
     public void LateUpdate()
     {
-        CalculatePosition();
+        transform.position = CalculatePosition();
     }
 
     private Vector3 CalculatePosition()
     {
         var sum = Vector3.zero;
-        int count = 0;
+        float count = 0;
         foreach (var target in _targets)
         {
-            sum += target;
+            sum += target.transform.position;
             count++;
         }
         if (_includeMouseOnCameraPos)
         {
-            sum += GetMousePosition();
-            count++;
+            sum += GetMousePosition() * _mouseWeight;
+            count+= _mouseWeight;
         }
 
         return sum / count;
@@ -36,7 +37,8 @@ public class CameraFollow : MonoBehaviour
 
     public void RefreshCamera()
     {
-        _targets = new List<Vector3>(FindObjectsOfType<CameraFollowTarget>().Select(x => x.transform.position));
+        var test = FindObjectsOfType<CameraFollowTarget>();
+        _targets = new List<GameObject>(FindObjectsOfType<CameraFollowTarget>().Select(x => x.gameObject));
     }
 
     private Vector3 GetMousePosition()
