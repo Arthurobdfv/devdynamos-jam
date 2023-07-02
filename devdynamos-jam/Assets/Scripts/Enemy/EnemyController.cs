@@ -32,6 +32,12 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if(enemyLife == 0)
+        {
+            isAlive = false;
+            Destroy(gameObject);
+        }
+
         shootTimer += Time.deltaTime;
         //Movimentação do enemy em direção ao player
         Vector2 direction = alvo.position - transform.position;
@@ -56,6 +62,14 @@ public class EnemyController : MonoBehaviour
             shootTimer = 0f;
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            enemyLife -= 1;
+        }
     }
 
     void Shoot()
