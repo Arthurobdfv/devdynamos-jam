@@ -15,6 +15,6 @@ public class OverchargeBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        material.SetFloat("FillBar",robotBehaviour.CurrentOverloadRate);
+        material.SetFloat("_FillBar",robotBehaviour.CurrentOverloadRate);
     }
 }

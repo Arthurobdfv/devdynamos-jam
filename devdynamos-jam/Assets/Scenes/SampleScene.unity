@@ -390,11 +390,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2757810eb9050184f8961d03ebaf33d6, type: 3}
---- !u!212 &389222426 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 389222426, guid: d55aade0e61136e45812376804639f7f, type: 3}
-  m_PrefabInstance: {fileID: 1579408650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &390461708
 GameObject:
   m_ObjectHideFlags: 0
@@ -18099,10 +18094,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1321319247, guid: d55aade0e61136e45812376804639f7f, type: 3}
-      propertyPath: fillbarRenderer
-      value: 
-      objectReference: {fileID: 389222426}
     - target: {fileID: 8778102742311210833, guid: d55aade0e61136e45812376804639f7f, type: 3}
       propertyPath: m_Name
       value: Robot
