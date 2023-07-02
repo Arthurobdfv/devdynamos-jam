@@ -136,6 +136,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLife: 0
   playerMaxLife: 3
+  audio:
+  - {fileID: 8300000, guid: 981ae191369a0fa42aab522a5bdaf158, type: 3}
+  - {fileID: 8300000, guid: cba2b4c0431d1bd4c8b961d7ab933a4d, type: 3}
   isDead: 0
   lifeBar: {fileID: 0}
   rig: {fileID: 0}
