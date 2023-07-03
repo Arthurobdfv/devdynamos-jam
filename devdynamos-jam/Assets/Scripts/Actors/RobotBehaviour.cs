@@ -34,7 +34,7 @@ public class RobotBehaviour : MonoBehaviour
     /// <summary>
     /// O galao de gasolina que o robo encontrou
     /// </summary>
-    [SerializeField] private ICarregavel _galaoDeGasolina;
+    [SerializeField] private ICarregavel? _galaoDeGasolina;
     /// <summary>
     /// O componente que auxilia as interacoes com objetos carregaveis
     /// </summary>
@@ -59,6 +59,7 @@ public class RobotBehaviour : MonoBehaviour
     /// Tempo que o robo leva para escanear a area de visao procurando por galoes
     /// </summary>
     [SerializeField] private float _scanTime;
+    [SerializeField] private float _overChargeEnemyDamage;
 
     #region Variaveis de controle de estado
     /// <summary>
@@ -150,15 +151,18 @@ public class RobotBehaviour : MonoBehaviour
     private void CalculateOverLoadChance()
     {
         var carryingItem = _carryObjectComponent.IsCarrying;
+        if (_currentOverload >= _maxOverloadBar)
+        {
+            StopAllCoroutines();
+            if (carryingItem) _carryObjectComponent.Drop(true);
+            carryingItem = false;
+            _galaoDeGasolina = null;
+            StartCoroutine(Overload());
+        }
         if (carryingItem)
             _currentOverload += _overloadRate * Time.deltaTime;
         else _currentOverload -= (_overloadRate / 2 ) * Time.deltaTime;
         _currentOverload = Mathf.Clamp(_currentOverload, 0, _maxOverloadBar);
-        if (_currentOverload >= _maxOverloadBar)
-        {
-            if (carryingItem) _carryObjectComponent.Drop(true);
-            StartCoroutine(Overload());
-        }
     }
 
     private void TryDropFuelOnSpaceShip()
@@ -260,6 +264,15 @@ public class RobotBehaviour : MonoBehaviour
             _isScanning = false;
         }
 
+    }
+
+    public void OnHit(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyBullet"))
+        {
+            if(!_isOverloaded) _currentOverload = Mathf.Clamp(_currentOverload + _overChargeEnemyDamage, 0f, _maxOverloadBar);
+            Destroy(collision.gameObject);
+        }
     }
 
     #region Gizmos
