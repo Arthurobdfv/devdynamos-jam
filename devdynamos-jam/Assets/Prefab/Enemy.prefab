@@ -166,6 +166,8 @@ MonoBehaviour:
   enemyVelocity: 10
   seguirPlayer: 80
   stopDistance: 5
+  lifePrefab: {fileID: 1984125512718223328, guid: de76d144f8152d647a45a4e3b594c514, type: 3}
+  chancetoDrop: 47
   enemyLife: 2
   isAlive: 1
   bulletPrefab: {fileID: 633759026680441903, guid: 4e1c8c7d67c265645940389dbc1ea937, type: 3}

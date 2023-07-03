@@ -11,6 +11,12 @@ public class EnemyController : MonoBehaviour
 
     public float stopDistance; //Distancia que o inimigo vai parar do alvo
 
+    [SerializeField] private GameObject lifePrefab;
+
+    [Range(0, 100)]
+    [SerializeField] private int chancetoDrop;
+
+
     #region EnemyLife
     [SerializeField] private int enemyLife = 2; //Vida do inimigo
     [SerializeField] private bool isAlive = true;
@@ -34,6 +40,7 @@ public class EnemyController : MonoBehaviour
     {
         if(enemyLife == 0)
         {
+            spawnPowerUp();
             isAlive = false;
             Destroy(gameObject);
         }
@@ -90,5 +97,14 @@ public class EnemyController : MonoBehaviour
             // Referenciar a posição do player 
             alvo = GameObject.FindGameObjectWithTag("Robo").transform;
         }
+    }
+
+    void spawnPowerUp()
+    {
+        if (Random.Range(0, 100) < chancetoDrop)
+        {
+            Instantiate(lifePrefab, transform.position, Quaternion.identity);
+        }
+
     }
 }

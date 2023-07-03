@@ -52,6 +52,9 @@ public class Player : MonoBehaviour
             alreadyActivated = true;
             ActivateScripts();
         }
+
+        playerLife = Mathf.Clamp(playerLife,  0,  playerMaxLife);
+        lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
     }
     private void FixedUpdate()
     {
@@ -84,7 +87,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "EnemyBullet" && isDead == false)
         {
             playerLife -= 1;
-            lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
         }
     }
 
@@ -108,6 +110,12 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(SceneManage.Instance.InitialAnimationDelay);
         StartCoroutine(_cameraShake.Shake(.3f));
+    }
+
+    public void HPup()
+    {
+        playerLife += 1;
+
     }
 
 }
