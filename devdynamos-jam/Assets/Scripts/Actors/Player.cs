@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     public bool PlayerDead => isDead;
 
+    [SerializeField] private Animator anim;
+
     [SerializeField] private AudioClip[] audio;
 
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         playerLife = playerMaxLife;
         _cameraShake = FindFirstObjectByType<CameraShake>();
         StartCoroutine(StartShakeRoutine());
@@ -59,6 +62,19 @@ public class Player : MonoBehaviour
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rig.velocity = movement * speed;
+
+        anim.SetFloat("Horizontal", moveHorizontal);
+        anim.SetFloat("Vertical", moveVertical);
+        anim.SetFloat("Speed", speed);
+
+        if (moveHorizontal < 0)
+        {
+            transform.localScale = new Vector2(-1f, 1f);
+        }
+        else if (moveHorizontal > 0)
+        {
+            transform.localScale = new Vector2(1f, 1f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
