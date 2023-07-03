@@ -125,9 +125,9 @@ public class RobotBehaviour : MonoBehaviour
     {
         if (!SceneManage.Instance.GameStarted) return;
         StateControl();
-        _robotAnimator.SetBool("Collecting", _isCollecting);
         _robotAnimator.SetBool("IsWalking", _isMoving);
         _robotAnimator.SetBool("IsScanning", _isScanning);
+        _robotAnimator.SetBool("Collecting", _carryObjectComponent.IsCarrying);
     }
 
     /// <summary>

@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     [Range(0, 100)]
     [SerializeField] private int chancetoDrop;
 
+    [SerializeField] private AudioClip _enemyDeath;
+
 
     #region EnemyLife
     [SerializeField] private int enemyLife = 2; //Vida do inimigo
@@ -40,6 +42,7 @@ public class EnemyController : MonoBehaviour
     {
         if(enemyLife == 0)
         {
+            AudioManager.PlaySound(_enemyDeath);
             spawnPowerUp();
             isAlive = false;
             Destroy(gameObject);

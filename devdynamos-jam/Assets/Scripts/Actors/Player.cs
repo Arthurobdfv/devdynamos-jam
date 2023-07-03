@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isDead = false;
 
     [SerializeField] private Image lifeBar;
+    [SerializeField] private AudioClip _hitSound;
     public Rigidbody2D rig;
     private Vector2 _direction;
     public float speed;
@@ -91,6 +92,7 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "EnemyBullet" && isDead == false)
         {
+            AudioManager.PlaySound(_hitSound);
             playerLife -= 1;
         }
     }

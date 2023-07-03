@@ -163,6 +163,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cba2b4c0431d1bd4c8b961d7ab933a4d, type: 3}
   isDead: 0
   lifeBar: {fileID: 0}
+  _hitSound: {fileID: 8300000, guid: 494a1f9f95b86bd47874f2b8fd84dd95, type: 3}
   rig: {fileID: 0}
   speed: 3
   _cameraShake: {fileID: 0}
@@ -218,6 +219,7 @@ MonoBehaviour:
   oxygenValue: 0
   oxygenParticle: {fileID: 5197768755096203126}
   diminuicaoDeOxigenioPorSegundo: 0.05
+  o2RecoveryPerSecond: 0.5
 --- !u!1 &4044304121464722115
 GameObject:
   m_ObjectHideFlags: 0

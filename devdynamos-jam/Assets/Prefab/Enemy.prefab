@@ -136,7 +136,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8571112603823386218
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +189,7 @@ MonoBehaviour:
   stopDistance: 5
   lifePrefab: {fileID: 1984125512718223328, guid: de76d144f8152d647a45a4e3b594c514, type: 3}
   chancetoDrop: 47
+  _enemyDeath: {fileID: 8300000, guid: a13b7172f3d070a4a9ffa15bb8c791fc, type: 3}
   enemyLife: 2
   isAlive: 1
   bulletPrefab: {fileID: 633759026680441903, guid: 4e1c8c7d67c265645940389dbc1ea937, type: 3}

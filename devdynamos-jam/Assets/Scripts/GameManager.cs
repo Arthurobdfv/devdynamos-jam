@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     void Winner()
     {
         winPanel.SetActive(true);
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
     }
 
     void Loser()
@@ -64,6 +64,6 @@ public class GameManager : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("MainGame");
     }
 }

@@ -20,6 +20,7 @@ public class Oxygen : MonoBehaviour
 
 
     public float diminuicaoDeOxigenioPorSegundo = 0.1f;
+    public float o2RecoveryPerSecond = .5f;
 
     private void Awake()
     {        
@@ -39,7 +40,7 @@ public class Oxygen : MonoBehaviour
 
         if (near == true)
         {
-            oxygenValue += diminuicaoDeOxigenioPorSegundo * Time.deltaTime;
+            oxygenValue += o2RecoveryPerSecond * Time.deltaTime;
         }
         else
         {
