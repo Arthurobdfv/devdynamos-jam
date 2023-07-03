@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: oxygenBar
       value: 
       objectReference: {fileID: 1379304034}
+    - target: {fileID: 2293325596674954697, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2833191728628214001, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
       propertyPath: m_Name
       value: Player
@@ -220,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2833191728628214003, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.29
+      value: -2.97
       objectReference: {fileID: 0}
     - target: {fileID: 2833191728628214003, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
       propertyPath: m_LocalPosition.z
