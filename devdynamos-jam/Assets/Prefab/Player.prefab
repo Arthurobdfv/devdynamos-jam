@@ -168,6 +168,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8104977eca7f97e418e9918289735d02, type: 3}
   - {fileID: 8300000, guid: 87e665329328a624c9846ebf666ccb63, type: 3}
   - {fileID: 8300000, guid: 0d990cd02261e0049b3f41c902afadf2, type: 3}
+  _spaceshipJump: {fileID: 8300000, guid: 5b9abae3919ace944bd6a93fc8c53acf, type: 3}
 --- !u!114 &5899891355576360950
 MonoBehaviour:
   m_ObjectHideFlags: 0

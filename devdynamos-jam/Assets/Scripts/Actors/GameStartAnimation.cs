@@ -11,6 +11,7 @@ public class GameStartAnimation : MonoBehaviour
     [SerializeField] GameObject _shipOpenSmoke;
     [SerializeField] GameObject _hitGroundSmoke;
     [SerializeField] List<AudioClip> _spaceshopOpenSound;
+    [SerializeField] AudioClip _spaceshipJump;
 
     private float Constant = Mathf.Deg2Rad * 180;
 
@@ -29,6 +30,7 @@ public class GameStartAnimation : MonoBehaviour
 
         var time = 0f;
         var totalAnimationTime = animationTime - animationDelay;
+        if(_spaceshipJump != null) AudioManager.PlaySound(_spaceshipJump);
         while (time <= totalAnimationTime)
         {
             var animationTimeRate = time / totalAnimationTime;

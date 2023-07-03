@@ -100,7 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotBehaviour: {fileID: 0}
   fillbarRenderer: {fileID: 389222426}
+  filliconRenderer: {fileID: 0}
   material: {fileID: 0}
+  _timeShowing: 2
+  _fadeoutTime: 0.5
 --- !u!1 &1858840258919901331
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +351,7 @@ MonoBehaviour:
   _hitGroundSmoke: {fileID: 0}
   _spaceshopOpenSound:
   - {fileID: 8300000, guid: 9b7061a9f202299438b3844157cd1a25, type: 3}
+  _spaceshipJump: {fileID: 0}
 --- !u!58 &8778102742311210829
 CircleCollider2D:
   m_ObjectHideFlags: 0

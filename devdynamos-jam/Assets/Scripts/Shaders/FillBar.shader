@@ -4,6 +4,7 @@ Shader "Unlit/FillBar"
     {
         _MainTex("Texture", 2D) = "white" {}
         _FillBar("FillBar", Range(0.0, 1.0)) = 0
+        _AlphaRate("AlphaRate", Range(0.0, 1.0)) = 1
         _GradientInitialColor("GradientInitialColor", Color) = (1,1,1,1)
         _GradientFinalColor("GradientFinalColor", Color) = (1,1,1,1)
     }
@@ -13,9 +14,11 @@ Shader "Unlit/FillBar"
 
         Pass
         {
+            Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+
 
             #include "UnityCG.cginc"
 
@@ -33,6 +36,7 @@ Shader "Unlit/FillBar"
 
             sampler2D _MainTex;
             float _FillBar;
+            float _AlphaRate;
             float4 _GradientInitialColor;
             float4 _GradientFinalColor;
 
@@ -51,6 +55,7 @@ Shader "Unlit/FillBar"
                 float fill = _FillBar > i.uv.y;
                 float4 color = lerp(_GradientInitialColor, _GradientFinalColor, _FillBar);
                 clip(fill - 1);
+                color.a = _AlphaRate;
                 return color;
         }
         ENDCG
