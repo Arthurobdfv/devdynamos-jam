@@ -8,6 +8,8 @@ public class FillBar : MonoBehaviour
     [SerializeField] public int maxFill = 3;
     [SerializeField] public int currentFill;
 
+    [SerializeField] public float CurrentFillRate => (float)currentFill / maxFill;
+
     [SerializeField] private Image fillBar;
 
 
