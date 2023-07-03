@@ -282,10 +282,6 @@ PrefabInstance:
       propertyPath: oxygenBar
       value: 
       objectReference: {fileID: 1379304034}
-    - target: {fileID: 2293325596674954697, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2833191728628214001, guid: ee053b77c216e1f499eceafd85d11fba, type: 3}
       propertyPath: m_Name
       value: Player
@@ -564,7 +560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &424597580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &681695049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2200,17 +2196,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1233398709, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
-      propertyPath: audio
-      value: 
-      objectReference: {fileID: 8300000, guid: 950763ccb64e0144b88aa3425386529d, type: 3}
-    - target: {fileID: 1233398709, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
       propertyPath: fillBar
       value: 
       objectReference: {fileID: 1379304034}
-    - target: {fileID: 2535669628100981522, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
-      propertyPath: m_Radius
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 2535669628100981523, guid: 62af2db9be28c7142aab32194b10bc92, type: 3}
       propertyPath: m_Name
       value: Nave

@@ -15,6 +15,7 @@ public class Oxygen : MonoBehaviour
 
 
     [SerializeField] public float oxygenValue;
+    [SerializeField] ParticleSystem oxygenParticle;
 
 
 
@@ -24,6 +25,8 @@ public class Oxygen : MonoBehaviour
     void Start()
     {
         oxygenValue = maxFill;
+        near = true;
+        oxygenParticle.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -45,15 +48,22 @@ public class Oxygen : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Nave"))
         {
             near = true;
+            oxygenParticle.gameObject.SetActive(true);
         }
-        else
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Nave"))
         {
             near = false;
+            oxygenParticle.gameObject.SetActive(false);
         }
+
     }
 }

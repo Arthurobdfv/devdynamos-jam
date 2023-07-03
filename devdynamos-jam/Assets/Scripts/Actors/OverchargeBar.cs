@@ -9,7 +9,7 @@ public class OverchargeBar : MonoBehaviour
     [SerializeField] private float _timeShowing;
     [SerializeField] private float _fadeoutTime;
     private float _timer;
-    private float _currentFill;
+    [SerializeField] private float _currentFill;
     private bool _dissappeared;
 
     private float CurrentFill

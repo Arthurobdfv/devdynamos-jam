@@ -175,7 +175,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.21133333}
   serializedVersion: 2
-  m_Radius: 7.99
+  m_Radius: 12
 --- !u!212 &8036294371276178310
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -242,7 +242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxFill: 3
   currentFill: 0
+  audio: {fileID: 8300000, guid: 950763ccb64e0144b88aa3425386529d, type: 3}
   fillBar: {fileID: 0}
+  isRespirando: 0
 --- !u!1 &7801293941834030424
 GameObject:
   m_ObjectHideFlags: 0
