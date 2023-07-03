@@ -310,6 +310,8 @@ MonoBehaviour:
   _scanTime: 0.5
   _overChargeEnemyDamage: 30
   _robotFoundSomething: {fileID: 8300000, guid: 66bbf232825981248997b594f1f948b3, type: 3}
+  _robotLostEnergy: {fileID: 8300000, guid: 4fc681d8c10ccdf42852d782c96e7e1a, type: 3}
+  _robotRefillEnergy: {fileID: 8300000, guid: 31d84cf68c324b547b2da05efb5b68cf, type: 3}
   _robotAnimator: {fileID: 8755779422055213245}
   _isCollecting: 0
   _robotSprite: {fileID: 8778102743545746678}
