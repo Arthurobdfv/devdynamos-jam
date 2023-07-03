@@ -26,7 +26,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaRate: 1
+    - _AlphaRate: 0
     - _FillBar: 1
     - _HealthRate: 0
     - _Maximum: 0.5
