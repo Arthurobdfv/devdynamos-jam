@@ -62,6 +62,10 @@ public class RobotBehaviour : MonoBehaviour
     [SerializeField] private float _overChargeEnemyDamage;
     [SerializeField] private AudioClip _robotFoundSomething;
 
+    [SerializeField] private Animator _robotAnimator;
+    [SerializeField] private bool _isCollecting;
+    [SerializeField] private GameObject _robotSprite;
+
     #region Variaveis de controle de estado
     /// <summary>
     /// Indica se o robo esta se movendo
@@ -100,7 +104,7 @@ public class RobotBehaviour : MonoBehaviour
     /// </summary>
     [SerializeField] private float _maxOverloadBar;
     [SerializeField] private float _currentOverload;
-    [SerializeField] private float _overloadTime; 
+    [SerializeField] private float _overloadTime;
     #endregion
 
     IEnumerable _patrolCoroutine;
@@ -119,6 +123,8 @@ public class RobotBehaviour : MonoBehaviour
     {
         if (!SceneManage.Instance.GameStarted) return;
         StateControl();
+        _robotAnimator.SetBool("Collecting", _isCollecting);
+        _robotAnimator.SetBool("IsWalking", _isMoving);
     }
 
     /// <summary>
@@ -162,7 +168,7 @@ public class RobotBehaviour : MonoBehaviour
         }
         if (carryingItem)
             _currentOverload -= _overloadRate * Time.deltaTime;
-        else _currentOverload += (_overloadRate / 2 ) * Time.deltaTime;
+        else _currentOverload += (_overloadRate / 2) * Time.deltaTime;
         _currentOverload = Mathf.Clamp(_currentOverload, 0, _maxOverloadBar);
     }
 
@@ -173,7 +179,7 @@ public class RobotBehaviour : MonoBehaviour
             _galaoDeGasolina = null;
             _carryObjectComponent.Drop();
             // Aqui podemos adicionar referencia aos scripts de vitoria do jogo e / ou scripts da nave ao receber a gasolina
-        } 
+        }
     }
 
     // Metodo que checa se o galao esta no campo de visao do Robo
@@ -195,6 +201,7 @@ public class RobotBehaviour : MonoBehaviour
     private void TryPickupFuel()
     {
         _carryObjectComponent.PickUp(_galaoDeGasolina);
+        _robotAnimator.Play("Robo_collect");
     }
 
     // Metodo principal de movimentacao do robo
@@ -204,6 +211,10 @@ public class RobotBehaviour : MonoBehaviour
         _isPatroling = false;
         IsMoving = true;
         var directionToWalk = (targetPosition.position - Position).normalized;
+        _robotAnimator.SetFloat("Horizontal", directionToWalk.x);
+        _robotAnimator.SetFloat("Vertical", directionToWalk.y);
+        // Gambiarra braba
+        _robotSprite.transform.localScale = new Vector2(Mathf.Abs(_robotSprite.transform.localScale.x) * (directionToWalk.x > 0 ? 1 : -1), _robotSprite.transform.localScale.y);
         transform.Translate(directionToWalk * Time.deltaTime * _robotMoveSpeed);
     }
 
@@ -213,7 +224,7 @@ public class RobotBehaviour : MonoBehaviour
         _isOverloaded = true;
         var rechargeRate = (float)_maxOverloadBar / _overloadTime;
         float time = 0f;
-        while(time < _overloadTime)
+        while (time < _overloadTime)
         {
             yield return new WaitForFixedUpdate();
             _currentOverload += rechargeRate * Time.deltaTime;
@@ -275,7 +286,7 @@ public class RobotBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("EnemyBullet"))
         {
-            if(!_isOverloaded) _currentOverload = Mathf.Clamp(_currentOverload - _overChargeEnemyDamage, 0f, _maxOverloadBar);
+            if (!_isOverloaded) _currentOverload = Mathf.Clamp(_currentOverload - _overChargeEnemyDamage, 0f, _maxOverloadBar);
             Destroy(collision.gameObject);
         }
     }
