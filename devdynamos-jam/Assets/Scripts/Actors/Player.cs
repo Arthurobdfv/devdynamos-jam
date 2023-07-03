@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerLife;
     [SerializeField] private int playerMaxLife = 3;
 
-    public bool PlayerDead => isDead;
+    [SerializeField] public bool PlayerDead => isDead;
 
     [SerializeField] private Animator anim;
 
@@ -55,6 +55,11 @@ public class Player : MonoBehaviour
 
         playerLife = Mathf.Clamp(playerLife,  0,  playerMaxLife);
         lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
+
+        if(playerLife == 0)
+        {
+            isDead = true;
+        }
     }
     private void FixedUpdate()
     {
