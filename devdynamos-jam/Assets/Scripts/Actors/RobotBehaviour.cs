@@ -61,6 +61,8 @@ public class RobotBehaviour : MonoBehaviour
     [SerializeField] private float _scanTime;
     [SerializeField] private float _overChargeEnemyDamage;
     [SerializeField] private AudioClip _robotFoundSomething;
+    [SerializeField] private AudioClip _robotLostEnergy;
+    [SerializeField] private AudioClip _robotRefillEnergy;
 
     [SerializeField] private Animator _robotAnimator;
     [SerializeField] private bool _isCollecting;
@@ -164,6 +166,7 @@ public class RobotBehaviour : MonoBehaviour
             if (carryingItem) _carryObjectComponent.Drop(true);
             carryingItem = false;
             _galaoDeGasolina = null;
+            AudioManager.PlaySound(_robotLostEnergy);
             StartCoroutine(Overload());
         }
         if (carryingItem)
@@ -232,6 +235,7 @@ public class RobotBehaviour : MonoBehaviour
         }
         _isOverloaded = false;
         _currentOverload = _maxOverloadBar;
+        AudioManager.PlaySound(_robotRefillEnergy);
         StartCoroutine(Scan());
     }
 
