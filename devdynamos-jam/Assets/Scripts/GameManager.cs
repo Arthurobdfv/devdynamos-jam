@@ -5,26 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private FillBar fill;
-    private Oxygen oxygen;
-    private Player lifeplayer;
+    //private FillBar fill;
+    //private Oxygen oxygen;
+    //private Player lifeplayer;
 
-    [SerializeField] private GameObject fimDeJogo;
+    //[SerializeField] private GameObject fimDeJogo;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        fill = FindObjectOfType<FillBar>();
+
+        /*fill = FindObjectOfType<FillBar>();
         oxygen = FindObjectOfType<Oxygen>();
         lifeplayer = FindObjectOfType<Player>();
         fimDeJogo.SetActive(false);
 
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; */
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if(fill.currentFill == fill.maxFill)
         {
@@ -57,5 +58,5 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    }*/
 }
