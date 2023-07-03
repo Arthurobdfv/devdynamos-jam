@@ -16,6 +16,7 @@ public class SpawnEnemy : MonoBehaviour
 
     IEnumerator SpawnEnemyRoutine() // Vai ficar spawnando o inimigo na distancia e no tempo definido
     {
+        yield return new WaitForSeconds(SceneManage.Instance.InitialAnimationDuration);
         while (true)
         {
             Vector2 spawnPosition = (Vector2)transform.position + Random.insideUnitCircle.normalized * spawnDistance;

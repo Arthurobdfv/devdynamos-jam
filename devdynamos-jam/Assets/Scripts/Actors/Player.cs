@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    public CameraShake _cameraShake;
+
     public List<MonoBehaviour> _scripsParaAtivarDepoisDoGameStart = new List<MonoBehaviour>();
     private bool alreadyActivated = false;
 
@@ -38,7 +40,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerLife = playerMaxLife;
-
+        _cameraShake = FindFirstObjectByType<CameraShake>();
+        StartCoroutine(StartShakeRoutine());
     }
 
     // Update is called once per frame
@@ -110,6 +113,13 @@ public class Player : MonoBehaviour
         {
             scr.enabled = true;
         }
+    }
+
+    private IEnumerator StartShakeRoutine()
+    {
+        yield return new WaitForSeconds(SceneManage.Instance.InitialAnimationDelay);
+        StartCoroutine(_cameraShake.Shake(2));
+        yield return new WaitForSeconds(2);
     }
 
 }
