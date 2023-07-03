@@ -401,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _naveSprite: {fileID: 1317580158}
+  _mainCameraToDisable: {fileID: 0}
 --- !u!1001 &800000080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -894,6 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameStarted: 0
   _initialAnimationDuration: 2
+  _initialAnimationDelay: 1
 --- !u!4 &1402430239
 Transform:
   m_ObjectHideFlags: 0

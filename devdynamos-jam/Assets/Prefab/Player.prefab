@@ -161,7 +161,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endPoint: {fileID: 0}
-  _jumpHeight: 10
+  _jumpHeight: 5
+  _shipOpenSmoke: {fileID: 6421629098288128620, guid: c240f516caa269346a0a27920d03035c, type: 3}
+  _hitGroundSmoke: {fileID: 919384976108490258, guid: 03c9eb3c6aa54994d8bccf7d9f12376a, type: 3}
+  _spaceshopOpenSound:
+  - {fileID: 8300000, guid: 8104977eca7f97e418e9918289735d02, type: 3}
+  - {fileID: 8300000, guid: 87e665329328a624c9846ebf666ccb63, type: 3}
+  - {fileID: 8300000, guid: 0d990cd02261e0049b3f41c902afadf2, type: 3}
 --- !u!114 &5899891355576360950
 MonoBehaviour:
   m_ObjectHideFlags: 0

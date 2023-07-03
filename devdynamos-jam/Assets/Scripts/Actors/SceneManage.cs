@@ -7,9 +7,11 @@ public class SceneManage : MonoBehaviour
 {
     public bool GameStarted => _gameStarted;
     public float InitialAnimationDuration => _initialAnimationDuration;
+    public float InitialAnimationDelay => _initialAnimationDelay;
 
     [SerializeField] private bool _gameStarted = false;
     [SerializeField] private float _initialAnimationDuration;
+    [SerializeField] private float _initialAnimationDelay;
 
 
 

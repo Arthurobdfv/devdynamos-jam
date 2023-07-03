@@ -8,23 +8,36 @@ public class GameStartAnimation : MonoBehaviour
     [SerializeField] private float _jumpHeight;
     private Vector3 _initialPosition;
 
+    [SerializeField] GameObject _shipOpenSmoke;
+    [SerializeField] GameObject _hitGroundSmoke;
+    [SerializeField] List<AudioClip> _spaceshopOpenSound;
+
     private float Constant = Mathf.Deg2Rad * 180;
 
     public void Start()
     {
         _initialPosition = transform.position;
-        StartCoroutine(StartAnimation(SceneManage.Instance.InitialAnimationDuration));
+        StartCoroutine(StartAnimation(SceneManage.Instance.InitialAnimationDuration, SceneManage.Instance.InitialAnimationDelay));
     }
 
-    public IEnumerator StartAnimation(float animationTime)
+    public IEnumerator StartAnimation(float animationTime, float animationDelay)
     {
+        //Instantiate smoke
+        AudioManager.PlayFromRandomClips(_spaceshopOpenSound.ToArray());
+        if(_shipOpenSmoke != null) Instantiate(_shipOpenSmoke);
+        yield return new WaitForSeconds(animationDelay);
+
         var time = 0f;
-        while (time <= animationTime)
+        var totalAnimationTime = animationTime - animationDelay;
+        while (time <= totalAnimationTime)
         {
-            transform.position = Vector3.Lerp(_initialPosition, _endPoint.position, time / animationTime) + new Vector3(0f, Mathf.Sin(Constant * (time / animationTime)) * _jumpHeight, 0f);
+            var animationTimeRate = time / totalAnimationTime;
+            transform.position = Vector3.Lerp(_initialPosition, _endPoint.position, animationTimeRate) + new Vector3(0f, Mathf.Sin(Constant * animationTimeRate) * _jumpHeight, 0f);
             yield return new WaitForFixedUpdate();
             time += Time.deltaTime;
         }
         transform.position = _endPoint.position;
+        // instantiate smoke
+        if (_hitGroundSmoke != null) Instantiate(_hitGroundSmoke, transform.position, Quaternion.identity);
     }
 }

@@ -100,7 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelBar: {fileID: 1233398709}
   fillbarRenderer: {fileID: 366965887048770080}
+  iconBarRenderer: {fileID: 0}
   material: {fileID: 0}
+  _blinkCycleDuration: 2
 --- !u!1 &2535669628100981523
 GameObject:
   m_ObjectHideFlags: 0
