@@ -308,7 +308,7 @@ MonoBehaviour:
   _playerMaxDistance: 3
   _scanTime: 0.5
   _overChargeEnemyDamage: 30
-  _robotFoundSomething: {fileID: 0}
+  _robotFoundSomething: {fileID: 8300000, guid: 66bbf232825981248997b594f1f948b3, type: 3}
   _isMoving: 0
   _isScanning: 0
   _isPatroling: 0

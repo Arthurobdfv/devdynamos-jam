@@ -69,7 +69,7 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
 
     private IEnumerator DropMovement()
     {
-        var movementDirection = (Vector2)Random.insideUnitCircle * .25f + (Vector2)transform.position;
+        var movementDirection = (Vector2)Random.insideUnitCircle * 2 + (Vector2)transform.position;
         var startPos = transform.position;
         var animTime = 0f;
         while(animTime < _onDropAnimationSpeed)
