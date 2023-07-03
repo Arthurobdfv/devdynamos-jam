@@ -60,6 +60,7 @@ public class RobotBehaviour : MonoBehaviour
     /// </summary>
     [SerializeField] private float _scanTime;
     [SerializeField] private float _overChargeEnemyDamage;
+    [SerializeField] private AudioClip _robotFoundSomething;
 
     #region Variaveis de controle de estado
     /// <summary>
@@ -184,7 +185,10 @@ public class RobotBehaviour : MonoBehaviour
         var numberOfCollitions = _circleCollider.OverlapCollider(new ContactFilter2D() { layerMask = (int)LayerMaskEnum.Gasolina }, collisions);
         var objetoCarregavel = collisions.FirstOrDefault(x => x.GetComponent<ICarregavel>() != null)?.gameObject;
         if (objetoCarregavel != null)
+        {
+            AudioManager.PlaySound(_robotFoundSomething);
             _galaoDeGasolina = objetoCarregavel.GetComponent<ICarregavel>();
+        }
     }
 
     // Metodo pra tentar pegar o fuel
