@@ -127,6 +127,7 @@ public class RobotBehaviour : MonoBehaviour
         StateControl();
         _robotAnimator.SetBool("Collecting", _isCollecting);
         _robotAnimator.SetBool("IsWalking", _isMoving);
+        _robotAnimator.SetBool("IsScanning", _isScanning);
     }
 
     /// <summary>
@@ -195,6 +196,7 @@ public class RobotBehaviour : MonoBehaviour
         var objetoCarregavel = collisions.FirstOrDefault(x => x.GetComponent<ICarregavel>() != null)?.gameObject;
         if (objetoCarregavel != null)
         {
+            _robotAnimator.SetTrigger("Found");
             AudioManager.PlaySound(_robotFoundSomething);
             _galaoDeGasolina = objetoCarregavel.GetComponent<ICarregavel>();
         }
@@ -243,6 +245,7 @@ public class RobotBehaviour : MonoBehaviour
     private IEnumerator Scan()
     {
         Debug.Log("Starting Scan");
+        
         _isScanning = true;
         float timeSinceStart = 0f;
         while (timeSinceStart < _scanTime)
