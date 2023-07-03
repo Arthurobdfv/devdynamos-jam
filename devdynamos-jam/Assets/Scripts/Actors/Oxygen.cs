@@ -21,10 +21,14 @@ public class Oxygen : MonoBehaviour
 
     public float diminuicaoDeOxigenioPorSegundo = 0.1f;
 
+    private void Awake()
+    {        
+        oxygenValue = maxFill;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        oxygenValue = maxFill;
         near = true;
         oxygenParticle.gameObject.SetActive(true);
     }

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLife: 0
-  playerMaxLife: 3
+  playerMaxLife: 5
   anim: {fileID: 0}
   audio:
   - {fileID: 8300000, guid: 981ae191369a0fa42aab522a5bdaf158, type: 3}
@@ -217,7 +217,7 @@ MonoBehaviour:
   near: 0
   oxygenValue: 0
   oxygenParticle: {fileID: 5197768755096203126}
-  diminuicaoDeOxigenioPorSegundo: 0.1
+  diminuicaoDeOxigenioPorSegundo: 0.05
 --- !u!1 &4044304121464722115
 GameObject:
   m_ObjectHideFlags: 0
