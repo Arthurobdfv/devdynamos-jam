@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2329545664622601277}
+  - component: {fileID: 4231636329992246970}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -24,13 +25,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123442189366243498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.47, z: 0}
+  m_LocalPosition: {x: 0, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2833191728628214003}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4231636329992246970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123442189366243498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ff3857e44c3964e91ddbf247698551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 0
+  bulletPrefab: {fileID: 529819658977765301, guid: dd1b5d8557f38814d8bb5e63ef0cab2c, type: 3}
+  firePoint: {fileID: 2329545664622601277}
+  audio:
+  - {fileID: 8300000, guid: 981ae191369a0fa42aab522a5bdaf158, type: 3}
+  - {fileID: 8300000, guid: cba2b4c0431d1bd4c8b961d7ab933a4d, type: 3}
 --- !u!1 &2833191728628214001
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +110,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &843642759
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -144,9 +163,7 @@ MonoBehaviour:
   lifeBar: {fileID: 0}
   rig: {fileID: 0}
   speed: 3
-  bulletSpeed: 2
-  bulletPrefab: {fileID: 529819658977765301, guid: dd1b5d8557f38814d8bb5e63ef0cab2c, type: 3}
-  firePoint: {fileID: 2329545664622601277}
+  _cameraShake: {fileID: 0}
   _scripsParaAtivarDepoisDoGameStart: []
 --- !u!114 &2925678477927618078
 MonoBehaviour:
@@ -303,4 +320,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

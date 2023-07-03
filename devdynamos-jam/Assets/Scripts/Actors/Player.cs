@@ -21,10 +21,6 @@ public class Player : MonoBehaviour
     private Vector2 _direction;
     public float speed;
 
-    public float bulletSpeed;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-
     public CameraShake _cameraShake;
 
     public List<MonoBehaviour> _scripsParaAtivarDepoisDoGameStart = new List<MonoBehaviour>();
@@ -53,20 +49,6 @@ public class Player : MonoBehaviour
             alreadyActivated = true;
             ActivateScripts();
         }
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 lookDirection = Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
-        lookDirection.z = 0f;
-
-        if (lookDirection.magnitude > 0.1f)
-        {
-            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
     }
     private void FixedUpdate()
     {
@@ -89,16 +71,7 @@ public class Player : MonoBehaviour
             lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
         }
     }
-    private void Shoot()
-    {
-        if (!SceneManage.Instance.GameStarted) return;
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-        bulletRigidbody.velocity = bullet.transform.up * bulletSpeed;
-
-        AudioManager.PlayFromRandomClips(audio);
-    }
 
     private void SetupScripts()
     {
@@ -118,8 +91,7 @@ public class Player : MonoBehaviour
     private IEnumerator StartShakeRoutine()
     {
         yield return new WaitForSeconds(SceneManage.Instance.InitialAnimationDelay);
-        StartCoroutine(_cameraShake.Shake(2));
-        yield return new WaitForSeconds(2);
+        StartCoroutine(_cameraShake.Shake(.3f));
     }
 
 }
