@@ -12,13 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject loserPanel;
 
-    private void Awake()
-    {
-        Time.timeScale = 1f;
-    }
+
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
+
         fill = FindObjectOfType<FillBar>();
         oxygen = FindObjectOfType<Oxygen>();
         lifeplayer = FindObjectOfType<Player>();
@@ -48,18 +47,23 @@ public class GameManager : MonoBehaviour
     void Winner()
     {
         winPanel.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     void Loser()
     {
-        loserPanel.SetActive(true);
-        Time.timeScale = 0;
+        loserPanel.SetActive(false);
+        //Time.timeScale = 0;
         //fim de jogo Derrota
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
