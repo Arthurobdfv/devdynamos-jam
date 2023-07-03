@@ -110,7 +110,7 @@ public class RobotBehaviour : MonoBehaviour
         _carryObjectComponent = GetComponent<CarryObjectComponent>() ?? throw new MissingComponentException(nameof(CarryObjectComponent));
         _circleCollider = GetComponent<CircleCollider2D>() ?? throw new MissingComponentException(nameof(CarryObjectComponent));
         _circleCollider.radius = _visionRange;
-        _currentOverload = 0f;
+        _currentOverload = _maxOverloadBar;
     }
 
     // Update is called once per frame
@@ -138,7 +138,7 @@ public class RobotBehaviour : MonoBehaviour
             MoveTowards(_spaceshipPosition);
             TryDropFuelOnSpaceShip();
         }
-        else if (SquareDistanceFromPlayer() > SquareFloat(_playerMaxDistance))
+        else if (SquareDistanceFromPlayer() > SquareFloat(_playerMaxDistance) && !_isScanning)
             MoveTowards(_playerToFollow.transform);
         else
         {
@@ -151,7 +151,7 @@ public class RobotBehaviour : MonoBehaviour
     private void CalculateOverLoadChance()
     {
         var carryingItem = _carryObjectComponent.IsCarrying;
-        if (_currentOverload >= _maxOverloadBar)
+        if (_currentOverload <= 0)
         {
             StopAllCoroutines();
             if (carryingItem) _carryObjectComponent.Drop(true);
@@ -160,8 +160,8 @@ public class RobotBehaviour : MonoBehaviour
             StartCoroutine(Overload());
         }
         if (carryingItem)
-            _currentOverload += _overloadRate * Time.deltaTime;
-        else _currentOverload -= (_overloadRate / 2 ) * Time.deltaTime;
+            _currentOverload -= _overloadRate * Time.deltaTime;
+        else _currentOverload += (_overloadRate / 2 ) * Time.deltaTime;
         _currentOverload = Mathf.Clamp(_currentOverload, 0, _maxOverloadBar);
     }
 
@@ -212,11 +212,12 @@ public class RobotBehaviour : MonoBehaviour
         while(time < _overloadTime)
         {
             yield return new WaitForFixedUpdate();
-            _currentOverload -= rechargeRate * Time.deltaTime;
+            _currentOverload += rechargeRate * Time.deltaTime;
             time += Time.deltaTime;
         }
         _isOverloaded = false;
-        _currentOverload = 0f;
+        _currentOverload = _maxOverloadBar;
+        StartCoroutine(Scan());
     }
 
 
@@ -270,7 +271,7 @@ public class RobotBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("EnemyBullet"))
         {
-            if(!_isOverloaded) _currentOverload = Mathf.Clamp(_currentOverload + _overChargeEnemyDamage, 0f, _maxOverloadBar);
+            if(!_isOverloaded) _currentOverload = Mathf.Clamp(_currentOverload - _overChargeEnemyDamage, 0f, _maxOverloadBar);
             Destroy(collision.gameObject);
         }
     }
