@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
 
     void Loser()
     {
-        loserPanel.SetActive(false);
-        //Time.timeScale = 0;
+        loserPanel.SetActive(true);
+        Time.timeScale = 0;
         //fim de jogo Derrota
     }
 
