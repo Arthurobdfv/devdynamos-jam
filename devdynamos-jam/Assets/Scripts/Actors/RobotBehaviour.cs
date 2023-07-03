@@ -115,6 +115,7 @@ public class RobotBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!SceneManage.Instance.GameStarted) return;
         StateControl();
     }
 

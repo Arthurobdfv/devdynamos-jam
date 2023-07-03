@@ -25,10 +25,13 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    public List<MonoBehaviour> _scripsParaAtivarDepoisDoGameStart = new List<MonoBehaviour>();
+    private bool alreadyActivated = false;
+
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
-
+        SetupScripts();
     }
 
     // Start is called before the first frame update
@@ -41,6 +44,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!SceneManage.Instance.GameStarted) return;
+        else if (!alreadyActivated)
+        {
+            alreadyActivated = true;
+            ActivateScripts();
+        }
         Vector3 mousePosition = Input.mousePosition;
         Vector3 lookDirection = Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
         lookDirection.z = 0f;
@@ -58,6 +67,8 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!SceneManage.Instance.GameStarted) return;
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -67,6 +78,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!SceneManage.Instance.GameStarted) return;
+
         if (collision.gameObject.tag == "EnemyBullet" && isDead == false)
         {
             playerLife -= 1;
@@ -75,11 +88,28 @@ public class Player : MonoBehaviour
     }
     private void Shoot()
     {
+        if (!SceneManage.Instance.GameStarted) return;
+
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
         bulletRigidbody.velocity = bullet.transform.up * bulletSpeed;
 
         AudioManager.PlayFromRandomClips(audio);
+    }
+
+    private void SetupScripts()
+    {
+        _scripsParaAtivarDepoisDoGameStart.Clear();
+        _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<SpawnEnemy>());
+        _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<Oxygen>());
+    }
+
+    private void ActivateScripts()
+    {
+        foreach(var scr in _scripsParaAtivarDepoisDoGameStart)
+        {
+            scr.enabled = true;
+        }
     }
 
 }

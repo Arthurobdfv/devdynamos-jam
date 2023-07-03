@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 843642759}
   - component: {fileID: 843642760}
   - component: {fileID: 843642761}
+  - component: {fileID: 2925678477927618078}
   - component: {fileID: 5899891355576360950}
   - component: {fileID: 1640506919}
   m_Layer: 0
@@ -114,7 +115,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2833191728628214001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa30e6181c194c84fa2fca91f1bc8794, type: 3}
   m_Name: 
@@ -146,6 +147,21 @@ MonoBehaviour:
   bulletSpeed: 2
   bulletPrefab: {fileID: 529819658977765301, guid: dd1b5d8557f38814d8bb5e63ef0cab2c, type: 3}
   firePoint: {fileID: 2329545664622601277}
+  _scripsParaAtivarDepoisDoGameStart: []
+--- !u!114 &2925678477927618078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833191728628214001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a034bff3ce5b84b8350c231c97e299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endPoint: {fileID: 0}
+  _jumpHeight: 10
 --- !u!114 &5899891355576360950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +181,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2833191728628214001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c001c3eb63d4d84a872853a2c8e2af3, type: 3}
   m_Name: 
