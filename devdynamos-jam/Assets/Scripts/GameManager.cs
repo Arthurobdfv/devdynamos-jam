@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private FillBar fill;
-    [SerializeField] private Oxygen oxygen;
-    [SerializeField] private Player lifeplayer;
+    private FillBar fill;
+    private Oxygen oxygen;
+    private Player lifeplayer;
 
     [SerializeField] private GameObject fimDeJogo;
 

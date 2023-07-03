@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private int playerLife;
+    [SerializeField] private int playerLife;
     [SerializeField] private int playerMaxLife = 3;
 
     public bool PlayerDead => isDead;
+
+    [SerializeField] private AudioClip[] audio;
 
 
     [SerializeField] private bool isDead = false;
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
+
     }
 
     // Start is called before the first frame update
@@ -64,7 +67,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet" && isDead == false)
+        if (collision.gameObject.tag == "EnemyBullet" && isDead == false)
         {
             playerLife -= 1;
             lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
@@ -75,6 +78,8 @@ public class Player : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
         bulletRigidbody.velocity = bullet.transform.up * bulletSpeed;
+
+        AudioManager.PlayFromRandomClips(audio);
     }
 
 }

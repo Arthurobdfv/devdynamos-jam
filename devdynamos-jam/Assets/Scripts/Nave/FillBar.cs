@@ -8,6 +8,8 @@ public class FillBar : MonoBehaviour
     [SerializeField] public int maxFill = 3;
     [SerializeField] public int currentFill;
 
+    [SerializeField] public float CurrentFillRate => (float)currentFill / maxFill;
+
     [SerializeField] private Image fillBar;
 
 
@@ -20,16 +22,20 @@ public class FillBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Combustivel")
+        var carregavel = collision.GetComponent<ICarregavel>();
+        if (collision.gameObject.tag == "Combustivel")
         {
-            currentFill += 1;
-            fillBar.fillAmount = ((float)currentFill / maxFill);
-
+            if (!carregavel.BeingCarried)
+            { 
+                currentFill += 1;
+                fillBar.fillAmount = ((float)currentFill / maxFill);
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

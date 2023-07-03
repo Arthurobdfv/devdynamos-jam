@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FillBar
+  m_Shader: {fileID: 4800000, guid: 8de022e71410f1a4e8e64b43c51931a5, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _FillBar: 1
+    - _HealthRate: 0
+    - _Maximum: 0.5
+    - _Minimum: 0
+    m_Colors:
+    - _GradientFinalColor: {r: 0.40000004, g: 0.7843138, b: 0.3921569, a: 1}
+    - _GradientInitialColor: {r: 0.8694378, g: 0.8745098, b: 0.16470586, a: 1}
+  m_BuildTextureStacks: []
