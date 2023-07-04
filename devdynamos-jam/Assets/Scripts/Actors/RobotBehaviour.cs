@@ -7,6 +7,7 @@ using UnityEngine;
 public class RobotBehaviour : MonoBehaviour
 {
     public float CurrentOverLoad => _currentOverload;
+    public float CurrentOverloadRate => _currentOverload / _maxOverloadBar;
     private bool IsMoving
     {
         get
@@ -33,7 +34,7 @@ public class RobotBehaviour : MonoBehaviour
     /// <summary>
     /// O galao de gasolina que o robo encontrou
     /// </summary>
-    [SerializeField] private ICarregavel _galaoDeGasolina;
+    [SerializeField] private ICarregavel? _galaoDeGasolina;
     /// <summary>
     /// O componente que auxilia as interacoes com objetos carregaveis
     /// </summary>
@@ -58,6 +59,14 @@ public class RobotBehaviour : MonoBehaviour
     /// Tempo que o robo leva para escanear a area de visao procurando por galoes
     /// </summary>
     [SerializeField] private float _scanTime;
+    [SerializeField] private float _overChargeEnemyDamage;
+    [SerializeField] private AudioClip _robotFoundSomething;
+    [SerializeField] private AudioClip _robotLostEnergy;
+    [SerializeField] private AudioClip _robotRefillEnergy;
+
+    [SerializeField] private Animator _robotAnimator;
+    [SerializeField] private bool _isCollecting;
+    [SerializeField] private GameObject _robotSprite;
 
     #region Variaveis de controle de estado
     /// <summary>
@@ -97,7 +106,7 @@ public class RobotBehaviour : MonoBehaviour
     /// </summary>
     [SerializeField] private float _maxOverloadBar;
     [SerializeField] private float _currentOverload;
-    [SerializeField] private float _overloadTime; 
+    [SerializeField] private float _overloadTime;
     #endregion
 
     IEnumerable _patrolCoroutine;
@@ -108,13 +117,17 @@ public class RobotBehaviour : MonoBehaviour
         _carryObjectComponent = GetComponent<CarryObjectComponent>() ?? throw new MissingComponentException(nameof(CarryObjectComponent));
         _circleCollider = GetComponent<CircleCollider2D>() ?? throw new MissingComponentException(nameof(CarryObjectComponent));
         _circleCollider.radius = _visionRange;
-        _currentOverload = 0f;
+        _currentOverload = _maxOverloadBar;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!SceneManage.Instance.GameStarted) return;
         StateControl();
+        _robotAnimator.SetBool("IsWalking", _isMoving);
+        _robotAnimator.SetBool("IsScanning", _isScanning);
+        _robotAnimator.SetBool("Collecting", _carryObjectComponent.IsCarrying);
     }
 
     /// <summary>
@@ -135,7 +148,7 @@ public class RobotBehaviour : MonoBehaviour
             MoveTowards(_spaceshipPosition);
             TryDropFuelOnSpaceShip();
         }
-        else if (SquareDistanceFromPlayer() > SquareFloat(_playerMaxDistance))
+        else if (SquareDistanceFromPlayer() > SquareFloat(_playerMaxDistance) && !_isScanning)
             MoveTowards(_playerToFollow.transform);
         else
         {
@@ -148,15 +161,19 @@ public class RobotBehaviour : MonoBehaviour
     private void CalculateOverLoadChance()
     {
         var carryingItem = _carryObjectComponent.IsCarrying;
-        if (carryingItem)
-            _currentOverload += _overloadRate * Time.deltaTime;
-        else _currentOverload -= (_overloadRate / 2 ) * Time.deltaTime;
-        _currentOverload = Mathf.Clamp(_currentOverload, 0, _maxOverloadBar);
-        if (_currentOverload >= _maxOverloadBar)
+        if (_currentOverload <= 0)
         {
+            StopAllCoroutines();
             if (carryingItem) _carryObjectComponent.Drop(true);
+            carryingItem = false;
+            _galaoDeGasolina = null;
+            AudioManager.PlaySound(_robotLostEnergy);
             StartCoroutine(Overload());
         }
+        if (carryingItem)
+            _currentOverload -= _overloadRate * Time.deltaTime;
+        else _currentOverload += (_overloadRate / 2) * Time.deltaTime;
+        _currentOverload = Mathf.Clamp(_currentOverload, 0, _maxOverloadBar);
     }
 
     private void TryDropFuelOnSpaceShip()
@@ -166,7 +183,7 @@ public class RobotBehaviour : MonoBehaviour
             _galaoDeGasolina = null;
             _carryObjectComponent.Drop();
             // Aqui podemos adicionar referencia aos scripts de vitoria do jogo e / ou scripts da nave ao receber a gasolina
-        } 
+        }
     }
 
     // Metodo que checa se o galao esta no campo de visao do Robo
@@ -178,13 +195,18 @@ public class RobotBehaviour : MonoBehaviour
         var numberOfCollitions = _circleCollider.OverlapCollider(new ContactFilter2D() { layerMask = (int)LayerMaskEnum.Gasolina }, collisions);
         var objetoCarregavel = collisions.FirstOrDefault(x => x.GetComponent<ICarregavel>() != null)?.gameObject;
         if (objetoCarregavel != null)
+        {
+            _robotAnimator.SetTrigger("Found");
+            AudioManager.PlaySound(_robotFoundSomething);
             _galaoDeGasolina = objetoCarregavel.GetComponent<ICarregavel>();
+        }
     }
 
     // Metodo pra tentar pegar o fuel
     private void TryPickupFuel()
     {
         _carryObjectComponent.PickUp(_galaoDeGasolina);
+        _robotAnimator.Play("Robo_collect");
     }
 
     // Metodo principal de movimentacao do robo
@@ -194,6 +216,10 @@ public class RobotBehaviour : MonoBehaviour
         _isPatroling = false;
         IsMoving = true;
         var directionToWalk = (targetPosition.position - Position).normalized;
+        _robotAnimator.SetFloat("Horizontal", directionToWalk.x);
+        _robotAnimator.SetFloat("Vertical", directionToWalk.y);
+        // Gambiarra braba
+        _robotSprite.transform.localScale = new Vector2(Mathf.Abs(_robotSprite.transform.localScale.x) * (directionToWalk.x > 0 ? 1 : -1), _robotSprite.transform.localScale.y);
         transform.Translate(directionToWalk * Time.deltaTime * _robotMoveSpeed);
     }
 
@@ -203,20 +229,23 @@ public class RobotBehaviour : MonoBehaviour
         _isOverloaded = true;
         var rechargeRate = (float)_maxOverloadBar / _overloadTime;
         float time = 0f;
-        while(time < _overloadTime)
+        while (time < _overloadTime)
         {
             yield return new WaitForFixedUpdate();
-            _currentOverload -= rechargeRate * Time.deltaTime;
+            _currentOverload += rechargeRate * Time.deltaTime;
             time += Time.deltaTime;
         }
         _isOverloaded = false;
-        _currentOverload = 0f;
+        _currentOverload = _maxOverloadBar;
+        AudioManager.PlaySound(_robotRefillEnergy);
+        StartCoroutine(Scan());
     }
 
 
     private IEnumerator Scan()
     {
         Debug.Log("Starting Scan");
+        
         _isScanning = true;
         float timeSinceStart = 0f;
         while (timeSinceStart < _scanTime)
@@ -258,6 +287,15 @@ public class RobotBehaviour : MonoBehaviour
             _isScanning = false;
         }
 
+    }
+
+    public void OnHit(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyBullet"))
+        {
+            if (!_isOverloaded) _currentOverload = Mathf.Clamp(_currentOverload - _overChargeEnemyDamage, 0f, _maxOverloadBar);
+            Destroy(collision.gameObject);
+        }
     }
 
     #region Gizmos

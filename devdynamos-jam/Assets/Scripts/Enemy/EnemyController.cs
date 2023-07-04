@@ -11,6 +11,14 @@ public class EnemyController : MonoBehaviour
 
     public float stopDistance; //Distancia que o inimigo vai parar do alvo
 
+    [SerializeField] private GameObject lifePrefab;
+
+    [Range(0, 100)]
+    [SerializeField] private int chancetoDrop;
+
+    [SerializeField] private AudioClip _enemyDeath;
+
+
     #region EnemyLife
     [SerializeField] private int enemyLife = 2; //Vida do inimigo
     [SerializeField] private bool isAlive = true;
@@ -32,6 +40,14 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if(enemyLife == 0)
+        {
+            AudioManager.PlaySound(_enemyDeath);
+            spawnPowerUp();
+            isAlive = false;
+            Destroy(gameObject);
+        }
+
         shootTimer += Time.deltaTime;
         //Movimentação do enemy em direção ao player
         Vector2 direction = alvo.position - transform.position;
@@ -58,6 +74,14 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            enemyLife -= 1;
+        }
+    }
+
     void Shoot()
     {
         // Criação do projetil
@@ -69,12 +93,21 @@ public class EnemyController : MonoBehaviour
         if (Random.Range(0, 100) < seguirPlayer)
         {
             // Referenciar a posição do player 
-            alvo = GameObject.Find("Player").transform;
+            alvo = GameObject.FindGameObjectWithTag("Player").transform;
         }
         else
         {
             // Referenciar a posição do player 
-            alvo = GameObject.Find("Gasolina").transform;
+            alvo = GameObject.FindGameObjectWithTag("Robo").transform;
         }
+    }
+
+    void spawnPowerUp()
+    {
+        if (Random.Range(0, 100) < chancetoDrop)
+        {
+            Instantiate(lifePrefab, transform.position, Quaternion.identity);
+        }
+
     }
 }

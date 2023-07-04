@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6186954573081586814
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6421629098288128620, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_Name
+      value: GroundSmoke Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629542173834448573, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629542173834448573, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629542173834448573, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.47258815
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629542173834448573, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.50373805
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629542173834448573, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629542173834448573, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629542173834448573, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.55921644
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.8290217
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -111.997
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692317693457345185, guid: c240f516caa269346a0a27920d03035c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c240f516caa269346a0a27920d03035c, type: 3}

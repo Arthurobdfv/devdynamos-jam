@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Combustivel
+  - Bullet
+  - Nave
+  - EnemyBullet
+  - Robo
   layers:
   - Default
   - TransparentFX

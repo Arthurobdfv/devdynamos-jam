@@ -9,18 +9,20 @@ public class GameManager : MonoBehaviour
     private Oxygen oxygen;
     private Player lifeplayer;
 
-    [SerializeField] private GameObject fimDeJogo;
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject loserPanel;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
+
         fill = FindObjectOfType<FillBar>();
         oxygen = FindObjectOfType<Oxygen>();
         lifeplayer = FindObjectOfType<Player>();
-        fimDeJogo.SetActive(false);
-
-        Time.timeScale = 1f;
+        winPanel.SetActive(false);
+        loserPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,12 +46,13 @@ public class GameManager : MonoBehaviour
 
     void Winner()
     {
-        fimDeJogo.SetActive(true);
+        winPanel.SetActive(true);
         Time.timeScale = 0;
     }
 
     void Loser()
     {
+        loserPanel.SetActive(true);
         Time.timeScale = 0;
         //fim de jogo Derrota
     }
@@ -57,5 +60,10 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainGame");
     }
 }

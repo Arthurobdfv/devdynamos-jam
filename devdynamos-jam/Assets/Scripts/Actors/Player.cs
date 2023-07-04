@@ -9,72 +9,120 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerLife;
     [SerializeField] private int playerMaxLife = 3;
 
-    public bool PlayerDead => isDead;
+    [SerializeField] public bool PlayerDead => isDead;
+
+    [SerializeField] private Animator anim;
+
+    [SerializeField] private AudioClip[] audio;
 
 
     [SerializeField] private bool isDead = false;
 
     [SerializeField] private Image lifeBar;
+    [SerializeField] private AudioClip _hitSound;
     public Rigidbody2D rig;
     private Vector2 _direction;
     public float speed;
 
-    public float bulletSpeed;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    public CameraShake _cameraShake;
+
+    public List<MonoBehaviour> _scripsParaAtivarDepoisDoGameStart = new List<MonoBehaviour>();
+    private bool alreadyActivated = false;
 
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
+        SetupScripts();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         playerLife = playerMaxLife;
-
+        _cameraShake = FindFirstObjectByType<CameraShake>();
+        StartCoroutine(StartShakeRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 lookDirection = Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
-        lookDirection.z = 0f;
-
-        if (lookDirection.magnitude > 0.1f)
+        if (!SceneManage.Instance.GameStarted) return;
+        else if (!alreadyActivated)
         {
-            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            alreadyActivated = true;
+            ActivateScripts();
         }
 
-        if (Input.GetMouseButtonDown(0))
+        playerLife = Mathf.Clamp(playerLife,  0,  playerMaxLife);
+        lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
+
+        if(playerLife == 0)
         {
-            Shoot();
+            isDead = true;
         }
     }
     private void FixedUpdate()
     {
+        if (!SceneManage.Instance.GameStarted) return;
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rig.velocity = movement * speed;
+
+        anim.SetFloat("Horizontal", moveHorizontal);
+        anim.SetFloat("Vertical", moveVertical);
+        anim.SetFloat("Speed", speed);
+
+        if (moveHorizontal < 0)
+        {
+            transform.localScale = new Vector2(-1f, 1f);
+        }
+        else if (moveHorizontal > 0)
+        {
+            transform.localScale = new Vector2(1f, 1f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet" && isDead == false)
+        if (!SceneManage.Instance.GameStarted) return;
+
+        if (collision.gameObject.tag == "EnemyBullet" && isDead == false)
         {
+            AudioManager.PlaySound(_hitSound);
             playerLife -= 1;
-            lifeBar.fillAmount = ((float)playerLife / playerMaxLife);
         }
     }
-    private void Shoot()
+
+
+    private void SetupScripts()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-        bulletRigidbody.velocity = bullet.transform.up * bulletSpeed;
+        _scripsParaAtivarDepoisDoGameStart.Clear();
+        _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<SpawnEnemy>());
+        _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<Oxygen>());
+    }
+
+    private void ActivateScripts()
+    {
+        foreach(var scr in _scripsParaAtivarDepoisDoGameStart)
+        {
+            scr.enabled = true;
+        }
+    }
+
+    private IEnumerator StartShakeRoutine()
+    {
+        yield return new WaitForSeconds(SceneManage.Instance.InitialAnimationDelay);
+        StartCoroutine(_cameraShake.Shake(.3f));
+    }
+
+    public void HPup()
+    {
+        playerLife += 1;
+
     }
 
 }
