@@ -9,8 +9,12 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private GameObject _naveSprite;
     [SerializeField] private Camera _mainCameraToDisable;
+
+    [SerializeField] private GameObject _tutorial;
+
     void Start()
     {
+        _tutorial.SetActive(false);
         _mainCameraToDisable = Camera.main;
     }
 
@@ -18,6 +22,17 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OpenTutorial()
+    {
+        _tutorial.SetActive(true);
+    }
+
+    public void CloseTutorial()
+    {
+        _tutorial.SetActive(false);
+    }
+
 
     public void PlayButton()
     {
