@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private GameObject _tutorial;
     [SerializeField] private GameObject _creditos;
+    [SerializeField] private GameObject _config;
 
     void Start()
     {
@@ -43,6 +44,16 @@ public class MainMenuController : MonoBehaviour
     public void CloseCreditos()
     {
         _creditos.SetActive(false);
+    }
+
+    public void OpenConfig()
+    {
+        _config.SetActive(true);
+    }
+
+    public void CloseConfig()
+    {
+        _config.SetActive(false);
     }
 
 
