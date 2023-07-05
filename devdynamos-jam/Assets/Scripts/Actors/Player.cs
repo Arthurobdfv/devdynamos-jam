@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
         _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<SpawnEnemy>());
         _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<Oxygen>());
         _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<PlayerMovement>());
+        _scripsParaAtivarDepoisDoGameStart.Add(GetComponentInChildren<PlayerShooting>());
     }
 
     private void ActivateScripts()

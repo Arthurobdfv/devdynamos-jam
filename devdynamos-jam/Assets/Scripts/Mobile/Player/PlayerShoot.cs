@@ -35,8 +35,5 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    private void OnLook(InputAction.CallbackContext context)
-    {
-        lookInput = context.ReadValue<Vector2>();
-    }
+
 }

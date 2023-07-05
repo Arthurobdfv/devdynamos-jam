@@ -46,7 +46,7 @@ public class PlayerShooting : MonoBehaviour
         AudioManager.PlayFromRandomClips(audio);
     }
 
-    private void OnLook(InputAction.CallbackContext context)
+    public void OnLook(InputAction.CallbackContext context)
     {
         lookDirection = context.ReadValue<Vector2>();
     }

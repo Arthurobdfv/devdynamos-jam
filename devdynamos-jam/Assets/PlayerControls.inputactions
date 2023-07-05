@@ -123,34 +123,6 @@
                     "isPartOfComposite": false
                 }
             ]
-        },
-        {
-            "name": "Rotação",
-            "id": "ee2ba582-2844-4921-bca1-0fc5faa312d8",
-            "actions": [
-                {
-                    "name": "Mira",
-                    "type": "Value",
-                    "id": "54f3e760-9745-4c3c-9205-54cc0d8e3429",
-                    "expectedControlType": "Stick",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "530341ea-3f01-474f-90eb-12f9c3ef3537",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Mira",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
         }
     ],
     "controlSchemes": []
