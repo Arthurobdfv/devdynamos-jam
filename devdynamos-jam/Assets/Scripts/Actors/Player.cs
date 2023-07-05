@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
     private IEnumerator StartShakeRoutine()
     {
         yield return new WaitForSeconds(SceneManage.Instance.InitialAnimationDelay);
-        StartCoroutine(_cameraShake.Shake(.3f));
+        //StartCoroutine(_cameraShake.Shake(.3f));
     }
 
     public void HPup()
