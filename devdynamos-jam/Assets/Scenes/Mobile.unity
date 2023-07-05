@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 392219954}
   - component: {fileID: 392219953}
   m_Layer: 5
-  m_Name: BG
+  m_Name: BG_Mira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 814393205}
   - component: {fileID: 814393204}
   m_Layer: 5
-  m_Name: BG (1)
+  m_Name: Moviment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1277,7 +1277,7 @@ GameObject:
   - component: {fileID: 861571143}
   - component: {fileID: 861571142}
   m_Layer: 5
-  m_Name: BG
+  m_Name: BG_Moviment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1749,7 +1749,7 @@ GameObject:
   - component: {fileID: 1231720519}
   - component: {fileID: 1231720518}
   m_Layer: 5
-  m_Name: BG (1)
+  m_Name: Mira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2658,7 +2658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652525588}
   m_Layer: 5
-  m_Name: -= Player Moviment (1)
+  m_Name: -= Mira
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2928,6 +2928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd72c6e67311bc242896ed9838335e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 5
 --- !u!114 &1842599113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2955,6 +2956,10 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
+    m_ActionId: 01a769ee-b6af-4fd2-9e18-ec78a68904d1
+    m_ActionName: Player/Mira[/Mouse/radius]
+  - m_PersistentCalls:
+      m_Calls: []
     m_ActionId: c95a2b5c-e28e-4537-8489-d5871746b26c
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -2962,26 +2967,35 @@ MonoBehaviour:
     m_ActionId: 16d364fd-498f-4cea-b5cc-f4fba5baa72c
     m_ActionName: Player/Attack[/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1842599112}
-        m_TargetAssemblyTypeName: PlayerShoot, Assembly-CSharp
-        m_MethodName: SetValorMira
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 01a769ee-b6af-4fd2-9e18-ec78a68904d1
-    m_ActionName: Player/Mira[/Mouse/radius]
+      m_Calls: []
+    m_ActionId: 54f3e760-9745-4c3c-9205-54cc0d8e3429
+    m_ActionName: "Rota\xE7\xE3o/Mira"
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!50 &1842599114
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842599109}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1845060217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3125,6 +3139,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 01a769ee-b6af-4fd2-9e18-ec78a68904d1
     m_ActionName: Player/Mira[/Mouse/radius]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 54f3e760-9745-4c3c-9205-54cc0d8e3429
+    m_ActionName: "Rota\xE7\xE3o/Mira"
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

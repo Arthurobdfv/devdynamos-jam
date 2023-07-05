@@ -27,7 +27,7 @@
                     "name": "Mira",
                     "type": "Value",
                     "id": "01a769ee-b6af-4fd2-9e18-ec78a68904d1",
-                    "expectedControlType": "Quaternion",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -114,6 +114,34 @@
                 {
                     "name": "",
                     "id": "07095247-7cfb-4a41-aff3-debd03b36c27",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mira",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Rotação",
+            "id": "ee2ba582-2844-4921-bca1-0fc5faa312d8",
+            "actions": [
+                {
+                    "name": "Mira",
+                    "type": "Value",
+                    "id": "54f3e760-9745-4c3c-9205-54cc0d8e3429",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "530341ea-3f01-474f-90eb-12f9c3ef3537",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
