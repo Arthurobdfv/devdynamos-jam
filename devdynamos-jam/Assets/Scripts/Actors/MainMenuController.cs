@@ -48,7 +48,7 @@ public class MainMenuController : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("Mobile", LoadSceneMode.Additive);
+        SceneManager.LoadScene("MainGame", LoadSceneMode.Additive);
         _naveSprite.SetActive(false);
         SceneManage.Instance.OnStart();
         Destroy(_mainCameraToDisable.gameObject);

@@ -8,9 +8,13 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     [SerializeField] private AudioClip[] audio;
+
+    SpriteRenderer sprite;
+
     void Start()
     {
         firePoint = transform;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

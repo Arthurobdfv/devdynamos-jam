@@ -31,7 +31,7 @@ public class CameraFollow : MonoBehaviour
         }
         if (_includeMouseOnCameraPos)
         {
-            //sum += GetMousePosition() * _mouseWeight;
+            sum += GetMousePosition() * _mouseWeight;
             count += _mouseWeight;
         }
         var avg = sum / count;
@@ -50,8 +50,8 @@ public class CameraFollow : MonoBehaviour
         _targets = new List<GameObject>(FindObjectsOfType<CameraFollowTarget>().Select(x => x.gameObject));
     }
 
-    /*private Vector3 GetMousePosition()
+    private Vector3 GetMousePosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }*/
+    }
 }
