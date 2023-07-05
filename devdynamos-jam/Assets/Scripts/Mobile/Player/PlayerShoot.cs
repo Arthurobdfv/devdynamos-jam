@@ -10,19 +10,19 @@ public class PlayerShoot : MonoBehaviour
 
     private void OnEnable()
     {
-        lookAction.Enable();
+        //lookAction.Enable();
     }
 
     private void OnDisable()
     {
-        lookAction.Disable();
+        //lookAction.Disable();
     }
 
     private void Awake()
     {
-        lookAction = new InputAction("LookAction", binding: "<Gamepad>/rightStick");
-        lookAction.performed += OnLook;
-        lookAction.canceled += OnLook;
+        //lookAction = new InputAction("LookAction", binding: "<Gamepad>/rightStick");
+        //lookAction.performed += OnLook;
+        //lookAction.canceled += OnLook;
     }
 
     private void Update()

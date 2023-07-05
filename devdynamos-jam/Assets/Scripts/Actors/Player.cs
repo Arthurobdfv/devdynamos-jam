@@ -20,8 +20,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Image lifeBar;
     [SerializeField] private AudioClip _hitSound;
-    public Rigidbody2D rig;
-    private Vector2 _direction;
     public float speed;
 
     public CameraShake _cameraShake;
@@ -31,7 +29,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        rig = GetComponent<Rigidbody2D>();
         SetupScripts();
     }
 
@@ -65,25 +62,6 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (!SceneManage.Instance.GameStarted) return;
-
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        rig.velocity = movement * speed;
-
-        anim.SetFloat("Horizontal", moveHorizontal);
-        anim.SetFloat("Vertical", moveVertical);
-        anim.SetFloat("Speed", speed);
-
-        if (moveHorizontal < 0)
-        {
-            transform.localScale = new Vector2(-1f, 1f);
-        }
-        else if (moveHorizontal > 0)
-        {
-            transform.localScale = new Vector2(1f, 1f);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -103,6 +81,7 @@ public class Player : MonoBehaviour
         _scripsParaAtivarDepoisDoGameStart.Clear();
         _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<SpawnEnemy>());
         _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<Oxygen>());
+        _scripsParaAtivarDepoisDoGameStart.Add(GetComponent<PlayerMovement>());
     }
 
     private void ActivateScripts()
@@ -116,13 +95,12 @@ public class Player : MonoBehaviour
     private IEnumerator StartShakeRoutine()
     {
         yield return new WaitForSeconds(SceneManage.Instance.InitialAnimationDelay);
-        //StartCoroutine(_cameraShake.Shake(.3f));
+        StartCoroutine(_cameraShake.Shake(.3f));
     }
 
     public void HPup()
     {
         playerLife += 1;
-
     }
 
 }

@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 2925678477927618078}
   - component: {fileID: 5899891355576360950}
   - component: {fileID: 1640506919}
+  - component: {fileID: 9029151944633211455}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -164,7 +165,6 @@ MonoBehaviour:
   isDead: 0
   lifeBar: {fileID: 0}
   _hitSound: {fileID: 8300000, guid: 494a1f9f95b86bd47874f2b8fd84dd95, type: 3}
-  rig: {fileID: 0}
   speed: 3
   _cameraShake: {fileID: 0}
   _scripsParaAtivarDepoisDoGameStart: []
@@ -220,6 +220,19 @@ MonoBehaviour:
   oxygenParticle: {fileID: 5197768755096203126}
   diminuicaoDeOxigenioPorSegundo: 0.05
   o2RecoveryPerSecond: 0.5
+--- !u!114 &9029151944633211455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833191728628214001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bdff53386cc254387e22822a9ce503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &4044304121464722115
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +338,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &3198382754664349541
 PrefabInstance:
   m_ObjectHideFlags: 0
