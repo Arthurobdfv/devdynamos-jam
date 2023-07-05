@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123442189366243498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08ff3857e44c3964e91ddbf247698551, type: 3}
   m_Name: 
@@ -50,6 +50,7 @@ MonoBehaviour:
   audio:
   - {fileID: 8300000, guid: 981ae191369a0fa42aab522a5bdaf158, type: 3}
   - {fileID: 8300000, guid: cba2b4c0431d1bd4c8b961d7ab933a4d, type: 3}
+  _fireRate: 0.3
 --- !u!1 &2833191728628214001
 GameObject:
   m_ObjectHideFlags: 0

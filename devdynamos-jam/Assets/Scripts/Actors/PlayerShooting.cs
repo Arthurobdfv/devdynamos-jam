@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,11 +8,16 @@ public class PlayerShooting : MonoBehaviour
     public Transform firePoint;
     private Vector2 lookDirection;
     [SerializeField] private AudioClip[] audio;
+    [SerializeField] private float _fireRate;
+    private Camera _camera;
+
+    private float _timeSinceLastShot = 0.3f;
 
     SpriteRenderer sprite;
 
     void Start()
     {
+        _camera = Camera.main;
         firePoint = transform;
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -22,14 +25,19 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _timeSinceLastShot += Time.deltaTime;
         if (lookDirection.magnitude > 0.1f)
         {
             float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            Shoot();
+            if (_timeSinceLastShot >= _fireRate)
+            {
+                Shoot();
+                _timeSinceLastShot = 0f;
+            };
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _timeSinceLastShot >= _fireRate)
         {
             Shoot();
         }
@@ -48,6 +56,13 @@ public class PlayerShooting : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        lookDirection = context.ReadValue<Vector2>();
+        if (context.control.ToString().Contains("Mouse/position"))
+        {
+            lookDirection = _camera.ScreenToWorldPoint(context.ReadValue<Vector2>()) - transform.position; 
+        }
+        else
+        {
+            lookDirection = context.ReadValue<Vector2>();
+        }
     }
 }
