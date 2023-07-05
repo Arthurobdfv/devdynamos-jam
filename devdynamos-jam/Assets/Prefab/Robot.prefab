@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1321319245}
-  - component: {fileID: 1321319246}
   - component: {fileID: 1321319247}
+  - component: {fileID: 9082190691449081645}
   m_Layer: 0
   m_Name: OverchargeBar
   m_TagString: Untagged
@@ -34,7 +34,26 @@ Transform:
   m_Father: {fileID: 8778102742311210835}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1321319246
+--- !u!114 &1321319247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321319244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ebe7f5c250f8949b7fdff68dacb5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotBehaviour: {fileID: 0}
+  fillbarRenderer: {fileID: 389222426}
+  filliconRenderer: {fileID: 0}
+  material: {fileID: 0}
+  _timeShowing: 2
+  _fadeoutTime: 0.5
+  _currentFill: 0
+--- !u!212 &9082190691449081645
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +93,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 33955ea0364cb1c44a5009a2090aa7e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -86,21 +105,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1321319247
+--- !u!1 &1858840258919901331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8566225060826627126}
+  - component: {fileID: 476482314871002846}
+  - component: {fileID: 3135246118901882412}
+  m_Layer: 0
+  m_Name: RobotHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8566225060826627126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858840258919901331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8778102742311210835}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &476482314871002846
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858840258919901331}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06, y: 0.03}
+  serializedVersion: 2
+  m_Radius: 0.52
+--- !u!114 &3135246118901882412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321319244}
+  m_GameObject: {fileID: 1858840258919901331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ebe7f5c250f8949b7fdff68dacb5a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 41384d39f58384f4e8df0759a965c950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotBehaviour: {fileID: 0}
-  fillbarRenderer: {fileID: 389222426}
-  material: {fileID: 0}
+  _robotBehaviour: {fileID: 0}
 --- !u!1 &6003523665546964935
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 6003523665546964935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58, y: 0.57, z: 1}
+  m_LocalScale: {x: 0.53, y: 0.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1321319245}
@@ -173,7 +239,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 19
   m_Sprite: {fileID: 21300000, guid: 9ec05f1adf2f80d4d9e21763a79f5307, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -196,6 +262,7 @@ GameObject:
   - component: {fileID: 8778102742311210835}
   - component: {fileID: 8778102742311210834}
   - component: {fileID: 8778102742311210828}
+  - component: {fileID: 1412969503701901627}
   - component: {fileID: 8778102742311210829}
   - component: {fileID: 328894374743222678}
   m_Layer: 0
@@ -219,6 +286,7 @@ Transform:
   m_Children:
   - {fileID: 8778102743545746679}
   - {fileID: 1321319245}
+  - {fileID: 8566225060826627126}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -240,12 +308,19 @@ MonoBehaviour:
   _visionRange: 5
   _playerMaxDistance: 3
   _scanTime: 0.5
+  _overChargeEnemyDamage: 30
+  _robotFoundSomething: {fileID: 8300000, guid: 66bbf232825981248997b594f1f948b3, type: 3}
+  _robotLostEnergy: {fileID: 8300000, guid: 4fc681d8c10ccdf42852d782c96e7e1a, type: 3}
+  _robotRefillEnergy: {fileID: 8300000, guid: 31d84cf68c324b547b2da05efb5b68cf, type: 3}
+  _robotAnimator: {fileID: 8755779422055213245}
+  _isCollecting: 0
+  _robotSprite: {fileID: 8778102743545746678}
   _isMoving: 0
   _isScanning: 0
   _isPatroling: 0
   _scannedPosition: 0
   _isOverloaded: 0
-  _overloadRate: 5
+  _overloadRate: 20
   _overloadRechargeRate: 5
   _maxOverloadBar: 100
   _currentOverload: 0
@@ -262,9 +337,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5c57219fc4b5f428c89bf5f4d8e8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _carryingSlowRate: 0.2
+  _speed: 2.5
+  _carryingSlowRate: 0.4
   _pickupDistance: 0.3
+--- !u!114 &1412969503701901627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778102742311210833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a034bff3ce5b84b8350c231c97e299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endPoint: {fileID: 0}
+  _jumpHeight: 5
+  _shipOpenSmoke: {fileID: 6421629098288128620, guid: c240f516caa269346a0a27920d03035c, type: 3}
+  _hitGroundSmoke: {fileID: 0}
+  _spaceshopOpenSound:
+  - {fileID: 8300000, guid: 9b7061a9f202299438b3844157cd1a25, type: 3}
+  _spaceshipJump: {fileID: 0}
 --- !u!58 &8778102742311210829
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -303,6 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8778102743545746679}
   - component: {fileID: 5113016386717760458}
+  - component: {fileID: 8755779422055213245}
   m_Layer: 0
   m_Name: RobotSprite
   m_TagString: Untagged
@@ -319,7 +414,7 @@ Transform:
   m_GameObject: {fileID: 8778102743545746678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5415325, y: 2.5415325, z: 2.5415325}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8778102742311210835}
@@ -366,14 +461,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 08a077f855f6fa741b396643f5b9c86c, type: 3}
+  m_Sprite: {fileID: -1349664531, guid: 08a077f855f6fa741b396643f5b9c86c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 1.5625, y: 1.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8755779422055213245
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778102743545746678}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40f5cece65ea51840b862fc9870698e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

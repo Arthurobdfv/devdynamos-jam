@@ -15,15 +15,23 @@ public class Oxygen : MonoBehaviour
 
 
     [SerializeField] public float oxygenValue;
+    [SerializeField] ParticleSystem oxygenParticle;
 
 
 
     public float diminuicaoDeOxigenioPorSegundo = 0.1f;
+    public float o2RecoveryPerSecond = .5f;
+
+    private void Awake()
+    {        
+        oxygenValue = maxFill;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        oxygenValue = maxFill;
+        near = true;
+        oxygenParticle.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -32,7 +40,7 @@ public class Oxygen : MonoBehaviour
 
         if (near == true)
         {
-            oxygenValue += diminuicaoDeOxigenioPorSegundo * Time.deltaTime;
+            oxygenValue += o2RecoveryPerSecond * Time.deltaTime;
         }
         else
         {
@@ -45,15 +53,22 @@ public class Oxygen : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Nave"))
         {
             near = true;
+            oxygenParticle.gameObject.SetActive(true);
         }
-        else
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Nave"))
         {
             near = false;
+            oxygenParticle.gameObject.SetActive(false);
         }
+
     }
 }

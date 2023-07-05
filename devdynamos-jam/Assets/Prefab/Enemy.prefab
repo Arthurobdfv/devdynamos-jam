@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2623236364332334292}
   - component: {fileID: 6983791317265270057}
+  - component: {fileID: 6303249482646988009}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -115,6 +116,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6303249482646988009
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640347074384899502}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9388ac883c8350f4c9c2a6f6a55cd92a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &8571112603823386218
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 8571112603823386218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2623236364332334292}
@@ -166,6 +187,9 @@ MonoBehaviour:
   enemyVelocity: 10
   seguirPlayer: 80
   stopDistance: 5
+  lifePrefab: {fileID: 1984125512718223328, guid: de76d144f8152d647a45a4e3b594c514, type: 3}
+  chancetoDrop: 47
+  _enemyDeath: {fileID: 8300000, guid: a13b7172f3d070a4a9ffa15bb8c791fc, type: 3}
   enemyLife: 2
   isAlive: 1
   bulletPrefab: {fileID: 633759026680441903, guid: 4e1c8c7d67c265645940389dbc1ea937, type: 3}
