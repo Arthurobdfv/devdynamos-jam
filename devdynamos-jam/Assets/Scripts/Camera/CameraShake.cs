@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public IEnumerator Shake(float duration = .15f, float magnitude = .4f)
+    /*public IEnumerator Shake(float duration = .15f, float magnitude = .4f)
     {
         Vector3 _startPos = transform.localPosition;
         float elapsed = 0f;
@@ -19,5 +19,5 @@ public class CameraShake : MonoBehaviour
         }
 
         transform.localPosition = _startPos;
-    }
+    }*/
 }
