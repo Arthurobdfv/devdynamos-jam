@@ -30,16 +30,22 @@ public class PlayerShooting : MonoBehaviour
         {
             float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            if (_timeSinceLastShot >= _fireRate)
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == UnityEngine.TouchPhase.Ended && _timeSinceLastShot >= _fireRate && Application.isMobilePlatform)
+                {
+                    Shoot();
+                    _timeSinceLastShot = 0f;
+                }
+            }
+
+            if (Input.GetMouseButtonDown(0) && _timeSinceLastShot >= _fireRate && !Application.isMobilePlatform)
             {
                 Shoot();
-                _timeSinceLastShot = 0f;
-            };
-        }
-
-        if (Input.GetMouseButtonDown(0) && _timeSinceLastShot >= _fireRate)
-        {
-            Shoot();
+            }
         }
     }
 

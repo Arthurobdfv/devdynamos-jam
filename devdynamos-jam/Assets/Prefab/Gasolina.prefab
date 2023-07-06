@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1324174364299299262}
   - component: {fileID: 1324174364299299249}
   - component: {fileID: 1324174364299299248}
+  - component: {fileID: 1724329322478181139}
   m_Layer: 10
   m_Name: Gasolina
   m_TagString: Combustivel
@@ -110,6 +111,22 @@ MonoBehaviour:
   CarryingIndicator: {fileID: 8311721019308022933}
   ObjectSprite: {fileID: 8311721019308022933}
   _carryingObject: {fileID: 0}
+--- !u!114 &1724329322478181139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324174364299299260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4aa4481c36f2a446b6fecd34ddb3ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3
+  isExplosion: 0
+  explosionAnimationClip: {fileID: 7400000, guid: a3669ba036006e540b0835876daec6c1, type: 2}
+  anim: {fileID: 0}
 --- !u!1 &5569196687024313281
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,8 +152,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5569196687024313281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7565, y: 1.7565, z: 1.7565}
+  m_LocalPosition: {x: 0, y: 0.33, z: 0}
+  m_LocalScale: {x: 5.392496, y: 5.392496, z: 1.1442192}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1324174364299299262}
@@ -183,12 +200,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -695280898, guid: f4b8bf8ba235f354eb724441c571e455, type: 3}
+  m_Sprite: {fileID: -1720111813, guid: 01764a8789b25e34db4803986c84d6a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9375, y: 1.25}
+  m_Size: {x: 0.96, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -204,6 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6251124710061791996}
   - component: {fileID: 8634721549963263963}
+  - component: {fileID: 432291168}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -220,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 8311721019308022933}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.5559335}
+  m_LocalScale: {x: 3.8517828, y: 3.8517828, z: 2.1405663}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1324174364299299262}
@@ -266,15 +284,36 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: -695280898, guid: f4b8bf8ba235f354eb724441c571e455, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1720111813, guid: 01764a8789b25e34db4803986c84d6a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9375, y: 1.25}
+  m_Size: {x: 0.96, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &432291168
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8311721019308022933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c28e6836c5eaa0845802dc5a35bb3377, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
