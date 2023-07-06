@@ -81,7 +81,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15394783, y: -0.01231575}
+  m_Offset: {x: 0, y: -1.01}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -92,8 +92,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96305084, y: 1.246316}
-  m_EdgeRadius: 0
+  m_Size: {x: 1.21, y: 1.68}
+  m_EdgeRadius: 0.08
 --- !u!114 &1324174364299299248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   CarryingIndicator: {fileID: 8311721019308022933}
   ObjectSprite: {fileID: 8311721019308022933}
   _carryingObject: {fileID: 0}
+  isCarrying: 0
 --- !u!114 &1724329322478181139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +127,7 @@ MonoBehaviour:
   life: 3
   isExplosion: 0
   explosionAnimationClip: {fileID: 7400000, guid: a3669ba036006e540b0835876daec6c1, type: 2}
+  audio: {fileID: 8300000, guid: 46030accb0d27834ab348c26072ab325, type: 3}
   anim: {fileID: 0}
 --- !u!1 &5569196687024313281
 GameObject:

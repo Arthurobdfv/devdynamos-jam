@@ -33,9 +33,8 @@ public class PlayerShooting : MonoBehaviour
 
             if (Input.touchCount > 0)
             {
-                Touch touch = Input.GetTouch(0);
 
-                if (touch.phase == UnityEngine.TouchPhase.Ended && _timeSinceLastShot >= _fireRate && Application.isMobilePlatform)
+                if (_timeSinceLastShot >= _fireRate && Application.isMobilePlatform)
                 {
                     Shoot();
                     _timeSinceLastShot = 0f;

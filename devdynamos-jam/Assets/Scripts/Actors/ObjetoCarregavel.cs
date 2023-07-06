@@ -23,7 +23,10 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
     /// Referencia ao objeto que esta carregando este objeto
     /// </summary>
     public GameObject _carryingObject;
-    
+
+    public bool isCarrying = false;
+
+
     // Metodo para dropar esse item
     public void OnDrop(bool move = false)
     {
@@ -33,6 +36,7 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
         if (move)
         {
             StartCoroutine(DropMovement());
+            isCarrying = false;
         }
     }
 
@@ -42,6 +46,8 @@ public class ObjetoCarregavel : MonoBehaviour, ICarregavel
         if (BeingCarried) return;
         _carryingObject = obj;
         PickupVisualUpdate();
+        isCarrying = true;
+
     }
 
     public void FixedUpdate()

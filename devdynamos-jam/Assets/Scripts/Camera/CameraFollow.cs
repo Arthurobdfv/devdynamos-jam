@@ -16,6 +16,7 @@ public class CameraFollow : MonoBehaviour
 
     public void LateUpdate()
     {
+
         transform.position = CalculatePosition();
         CalculateCameraSize();
     }
@@ -24,16 +25,19 @@ public class CameraFollow : MonoBehaviour
     {
         var sum = Vector3.zero;
         float count = 0;
-        foreach (var target in _targets)
-        {
-            sum += target.transform.position;
-            count++;
-        }
-        if (_includeMouseOnCameraPos)
-        {
-            sum += GetMousePosition() * _mouseWeight;
-            count += _mouseWeight;
-        }
+
+
+            foreach (var target in _targets)
+            {
+                sum += target.transform.position;
+                count++;
+            }
+            if (_includeMouseOnCameraPos && !Application.isMobilePlatform)
+            {
+                sum += GetMousePosition() * _mouseWeight;
+                count += _mouseWeight;
+            }
+
         var avg = sum / count;
         return avg;
     }

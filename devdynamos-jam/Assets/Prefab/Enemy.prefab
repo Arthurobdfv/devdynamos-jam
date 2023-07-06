@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alvo: {fileID: 0}
   enemyVelocity: 10
-  seguirPlayer: 80
+  seguirPlayer: 22.3
   stopDistance: 5
   lifePrefab: {fileID: 1984125512718223328, guid: de76d144f8152d647a45a4e3b594c514, type: 3}
   chancetoDrop: 47
