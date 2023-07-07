@@ -13,9 +13,14 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject _tutorial;
     [SerializeField] private GameObject _creditos;
     [SerializeField] private GameObject _config;
+    [SerializeField] private GameObject _leaderBoard;
+    [SerializeField] private GameObject _nickname;
+
+    private PlayerManager PM;
 
     void Start()
     {
+        PM = FindAnyObjectByType<PlayerManager>();
         _tutorial.SetActive(false);
         _creditos.SetActive(false);
         _mainCameraToDisable = Camera.main;
@@ -55,6 +60,35 @@ public class MainMenuController : MonoBehaviour
     {
         _config.SetActive(false);
     }
+
+    public void OpenLeadboard()
+    {
+        _leaderBoard.SetActive(true);
+    }
+
+    public void CloseLeaderBoard()
+    {
+        _leaderBoard.SetActive(false);
+    }
+
+    public void OpenNickname()
+    {
+        if(PM.playerNameInputfild.text.Length == 0)
+        {
+            _nickname.SetActive(true);
+        }
+        else
+        {
+            PlayButton();
+        }
+
+    }
+
+    public void CloseNickna()
+    {
+        _nickname.SetActive(false);
+    }
+
 
 
     public void PlayButton()

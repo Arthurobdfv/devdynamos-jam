@@ -30,7 +30,7 @@ public class Combustivel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "Bullet" && _isCarring.isCarrying == false)
+        if(collision.gameObject.tag == "EnemyBullet" && _isCarring.isCarrying == false)
         {
             life -= 1;
         }

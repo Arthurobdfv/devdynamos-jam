@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class LifeUp : MonoBehaviour
 {
-    private Player player;
+    private PlayerMovement player;
 
     [SerializeField] private AudioClip audio;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<PlayerMovement>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

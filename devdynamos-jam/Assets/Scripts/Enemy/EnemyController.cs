@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    private GameManager GM;
+
     [SerializeField] private Transform alvo; // O alvo do player será definido na sorte
     public float enemyVelocity; //  Velocidade do player até o inimigo
     [Range(0, 100)]
@@ -36,6 +38,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         Follow();
+        GM = FindAnyObjectByType<GameManager>();
     }
 
     void Update()
@@ -46,6 +49,7 @@ public class EnemyController : MonoBehaviour
             spawnPowerUp();
             isAlive = false;
             Destroy(gameObject);
+            GM.ScoreControl();
         }
 
         shootTimer += Time.deltaTime;

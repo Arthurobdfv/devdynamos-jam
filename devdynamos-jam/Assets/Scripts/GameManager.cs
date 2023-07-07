@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public Leaderboard leaderboard;
+    Scene currentScene = SceneManager.GetActiveScene();
+
+    private int score;
+
     private FillBar fill;
     private Oxygen oxygen;
-    private Player lifeplayer;
+    private PlayerMovement lifeplayer;
 
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject loserPanel;
@@ -16,11 +22,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        leaderboard = FindAnyObjectByType<Leaderboard>();
         Time.timeScale = 1f;
 
         fill = FindObjectOfType<FillBar>();
         oxygen = FindObjectOfType<Oxygen>();
-        lifeplayer = FindObjectOfType<Player>();
+        lifeplayer = FindObjectOfType<PlayerMovement>();
         winPanel.SetActive(false);
         loserPanel.SetActive(false);
     }
@@ -30,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         if(fill.currentFill == fill.maxFill)
         {
-            Winner();
+            StartCoroutine(Winner());
         }
 
         if (oxygen.isOxygen == false)
@@ -44,10 +51,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Winner()
+    IEnumerator Winner()
     {
         winPanel.SetActive(true);
         Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(1f);
+        yield return leaderboard.SubmitScoreRoutine(score);
     }
 
     void Loser()
@@ -62,8 +71,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void ScoreControl()
+    {
+        score += 1;
+    }
+
     public void Menu()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Menu");
     }
 }
